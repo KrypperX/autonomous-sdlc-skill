@@ -39,7 +39,7 @@ The skill reconciles existing Issue/PR state, derives stable-ID checklist items,
 
 - [Task progress protocol](references/TASK_PROGRESS_PROTOCOL.md)
 - [Task progress template](assets/templates/task_progress.md)
-- [AI-native SDLC playbook coverage](docs/PLAYBOOK_COVERAGE.md)
+- [Autonomous SDLC behavioral contract](references/BEHAVIOR_CONTRACT.md)
 
 ## Readiness
 
