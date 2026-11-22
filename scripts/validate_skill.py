@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
     "references/STAGE_CONTRACTS.md", "references/QUALITY_PROTOCOL.md",
     "references/RECOVERY_MATRIX.md", "references/EXTERNAL_SKILLS.md",
-    "references/SKILL_ROUTING.md", "references/BEHAVIOR_CONTRACT.md", "references/SKILL_ACQUISITION.md", "references/TASK_PROGRESS_PROTOCOL.md", "references/WORKFLOW_RULES.md",
+    "references/SKILL_ROUTING.md", "references/BEHAVIOR_CONTRACT.md", "references/SKILL_ACQUISITION.md", "references/OPERATIONAL_CHALLENGE.md", "references/TASK_PROGRESS_PROTOCOL.md", "references/WORKFLOW_RULES.md",
     "references/HANDOFF_TEMPLATE.md", "assets/templates/intent.md",
     "assets/templates/spec.md", "assets/templates/plan.md",
     "assets/templates/review.md", "assets/templates/incident.md",
