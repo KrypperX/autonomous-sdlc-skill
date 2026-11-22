@@ -11,7 +11,7 @@
 9. Diagnose failures before bounded retry; never retry non-idempotent actions blindly.
 10. Never bypass branch protection, CI, security policy, permissions or approvals.
 11. Merge/deploy only when authorized and supported by existing workflows.
-12. Use trusted external skills only after source, license, compatibility and permissions review; never auto-install by default.
+12. Inspect installed specialists first; use reviewed, task-relevant project-local skill acquisition within delegated permissions under SKILL_ACQUISITION.md. Never execute unreviewed code or install globally without separate authorization.
 13. Preserve checkpoints where supported; otherwise provide a handoff artifact.
 14. Verify outcomes when observable; turn confirmed failures into regression tests and deduplicated follow-ups.
 15. Do not claim autonomous background scheduling. External orchestration owns wake and persistence.
@@ -19,3 +19,5 @@
 16. At start/resume, reconcile existing issue TODOs and progress against current repo/PR/CI state; preserve user-authored checklist items.
 17. Create stable-ID, dependency-aware work items; mark checkboxes only when VERIFIED with evidence. Persist meaningful transitions, blockers and a next action at each session boundary.
 18. Follow our own references/BEHAVIOR_CONTRACT.md; distinguish behavioral guidance from externally enforced hooks, monitoring and CI.
+
+19. Execute authorized changes and verification; challenge unsupported user/agent assumptions with evidence, and use bounded subagent critique only where it improves expected outcomes. Follow OPERATIONAL_CHALLENGE.md.
