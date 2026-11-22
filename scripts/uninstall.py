@@ -7,9 +7,9 @@ START = '<!-- autonomous-sdlc:begin -->'
 END = '<!-- autonomous-sdlc:end -->'
 OWNED_REFS = [
     'STAGE_CONTRACTS.md', 'QUALITY_PROTOCOL.md', 'RECOVERY_MATRIX.md',
-    'EXTERNAL_SKILLS.md', 'SKILL_ROUTING.md', 'WORKFLOW_RULES.md', 'HANDOFF_TEMPLATE.md',
+    'EXTERNAL_SKILLS.md', 'SKILL_ROUTING.md', 'TASK_PROGRESS_PROTOCOL.md', 'WORKFLOW_RULES.md', 'HANDOFF_TEMPLATE.md',
 ]
-OWNED_TEMPLATES = ['intent.md', 'spec.md', 'plan.md', 'review.md', 'incident.md']
+OWNED_TEMPLATES = ['intent.md', 'spec.md', 'plan.md', 'review.md', 'incident.md', 'task_progress.md']
 
 def uninstall(project, scope, rules):
     project = pathlib.Path(project).resolve()
