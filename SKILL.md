@@ -9,7 +9,7 @@ This is a Codex skill, not a scheduler, MCP server or autonomous runtime. Read r
 
 ## Mandatory progress behavior
 
-For every multi-step task, follow [TASK_PROGRESS_PROTOCOL](references/TASK_PROGRESS_PROTOCOL.md): reconcile the existing issue/PR and checklist before coding; create stable-ID TODOs tied to acceptance criteria; update statuses at meaningful transitions; mark GitHub checkboxes complete **only after VERIFIED evidence**; persist checkpoints and resume from the first unverified dependency. Never erase user checklist content or claim a GitHub update that was not written. Use [task progress template](assets/templates/task_progress.md) when useful. Follow the [Anthropic playbook coverage mapping](docs/PLAYBOOK_COVERAGE.md) as a Codex-compatible adaptation, not as a claim of autonomous background execution.
+For every multi-step task, follow [TASK_PROGRESS_PROTOCOL](references/TASK_PROGRESS_PROTOCOL.md): reconcile the existing issue/PR and checklist before coding; create stable-ID TODOs tied to acceptance criteria; update statuses at meaningful transitions; mark GitHub checkboxes complete **only after VERIFIED evidence**; persist checkpoints and resume from the first unverified dependency. Never erase user checklist content or claim a GitHub update that was not written. Use [task progress template](assets/templates/task_progress.md) when useful. Follow our independent [behavioral contract](references/BEHAVIOR_CONTRACT.md); no external playbook is required.
 
 ## Execution order
 
