@@ -43,12 +43,12 @@ def install(project, scope, rules, roles):
         for src, rel in entries:
             target = dest/rel
             expected = manifest['files'].get(rel)
-            if target.exists() and (not target.is_file() or expected is None or
-                                    hashlib.sha256(target.read_bytes()).hexdigest() != expected):
+            if target.is_symlink() or (target.exists() and (not target.is_file() or expected is None or
+                                    hashlib.sha256(target.read_bytes()).hexdigest() != expected)):
                 raise ValueError('Refusing to overwrite modified/unowned file: ' + rel)
     else:
         for src, rel in entries:
-            if (dest/rel).exists():
+            if (dest/rel).exists() or (dest/rel).is_symlink():
                 raise ValueError('Refusing to overwrite unowned file: ' + rel)
     # Install only owned files. Never delete arbitrary files in destination.
     dest.mkdir(parents=True, exist_ok=True)
