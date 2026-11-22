@@ -33,6 +33,14 @@ Run `python3 scripts/validate_skill.py && python3 -m unittest discover -s tests 
 
 For small changes, keep evidence concise. For high-risk changes, use written spec, rollback plan and deeper tests. Repository policies and required CI checks always take precedence.
 
+## Issue TODO and progress behavior
+
+The skill reconciles existing Issue/PR state, derives stable-ID checklist items, records meaningful progress events, checkpoints on interruption, and resumes by revalidating evidence against the current commit. GitHub checkboxes mean **VERIFIED**, not merely implemented. When GitHub writes are unavailable it keeps a local/versioned handoff and reports the limitation; it cannot update issues while no Codex session is running.
+
+- [Task progress protocol](references/TASK_PROGRESS_PROTOCOL.md)
+- [Task progress template](assets/templates/task_progress.md)
+- [AI-native SDLC playbook coverage](docs/PLAYBOOK_COVERAGE.md)
+
 ## Readiness
 
 Offline structure/installer tests are not behavioral evaluations. Real Codex skill activation, native subagents, external skill interoperability and behavioral evaluation scenarios must be tested before production-readiness claims. See [evaluation plan](docs/BEHAVIORAL_EVAL_PLAN.md).
