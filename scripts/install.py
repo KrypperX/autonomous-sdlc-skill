@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Install skill conservatively; preserve user-managed files."""
 import argparse
+import hashlib
+import json
 import pathlib
 import shutil
 import sys
@@ -26,21 +28,37 @@ def install(project, scope, rules, roles):
             raise ValueError('Malformed or duplicate managed markers; refusing to edit')
         if START in current and current.index(START) > current.index(END):
             raise ValueError('Managed markers out of order')
+    # Track exact installed bytes so upgrades and uninstall preserve edits.
+    manifest_path = dest/'.autonomous-sdlc-manifest.json'
+    manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else None
+    sources = [ROOT/'SKILL.md', *sorted((ROOT/'references').glob('*.md')),
+               *sorted((ROOT/'assets/templates').glob('*.md')),
+               *sorted((ROOT/'docs').glob('*.md'))]
+    entries = [(src, src.relative_to(ROOT).as_posix()) for src in sources]
+    if dest.exists() and manifest is None:
+        raise ValueError('Legacy install lacks ownership manifest; back up/migrate manually')
+    if manifest is not None:
+        if manifest.get('version') != 1 or not isinstance(manifest.get('files'), dict):
+            raise ValueError('Invalid ownership manifest')
+        for src, rel in entries:
+            target = dest/rel
+            expected = manifest['files'].get(rel)
+            if target.exists() and (not target.is_file() or expected is None or
+                                    hashlib.sha256(target.read_bytes()).hexdigest() != expected):
+                raise ValueError('Refusing to overwrite modified/unowned file: ' + rel)
+    else:
+        for src, rel in entries:
+            if (dest/rel).exists():
+                raise ValueError('Refusing to overwrite unowned file: ' + rel)
     # Install only owned files. Never delete arbitrary files in destination.
     dest.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(ROOT/'SKILL.md', dest/'SKILL.md')
-    refs = dest/'references'
-    refs.mkdir(exist_ok=True)
-    for source in (ROOT/'references').glob('*.md'):
-        shutil.copy2(source, refs/source.name)
-    assets = dest/'assets/templates'
-    assets.mkdir(parents=True, exist_ok=True)
-    for source in (ROOT/'assets/templates').glob('*.md'):
-        shutil.copy2(source, assets/source.name)
-    docs = dest/'docs'
-    docs.mkdir(exist_ok=True)
-    for source in (ROOT/'docs').glob('*.md'):
-        shutil.copy2(source, docs/source.name)
+    owned = {}
+    for src, rel in entries:
+        target = dest/rel
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(src, target)
+        owned[rel] = hashlib.sha256(target.read_bytes()).hexdigest()
+    manifest_path.write_text(json.dumps({'version': 1, 'files': owned}, indent=2) + '\n')
     if rules:
         block = START + '\n' + (
             'For engineering tasks, use the autonomous-sdlc skill and its '
