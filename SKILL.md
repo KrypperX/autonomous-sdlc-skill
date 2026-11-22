@@ -1,41 +1,36 @@
 ---
 name: autonomous-sdlc
-description: Run a policy-aware, evidence-driven software development lifecycle using Codex subagents, from discovery through maintenance and feedback.
+description: Evidence-driven, risk-adaptive Codex software development from intent through review, delivery and feedback. Uses optional specialist skills without creating an engine.
 ---
 
 # Autonomous SDLC
 
-## Purpose
-Use this skill when asked to develop, fix, review, release, or continue an engineering task end to end. Never claim continuous execution unless an external scheduler exists.
+This is a Codex skill, not a scheduler, MCP server or autonomous runtime. Read repository `AGENTS.md`, local policies and existing CI before working. Existing permissions, branch rules and orchestration are authoritative.
 
-## Startup
-1. Read repository AGENTS.md, task, policies and available tools.
-2. Inspect existing orchestration, task state, CI, roles and recovery before adding components.
-3. Establish task ID, acceptance criteria, source revision, permissions, existing branch and PR. Deduplicate.
-4. Identify dependencies and risk; delegate independent work to supported subagents.
+## Mandatory progress behavior
 
-## Lifecycle
-1. DISCOVER: select eligible issue, incident, technical debt or authorized user request; prioritize impact and dependencies.
-2. PLAN: produce implementation plan, touched components, tests, risks and rollback; keep small changes lightweight.
-3. DESIGN: document behavior, interfaces, migration and security concerns as applicable.
-4. BUILD: delegate disjoint work in isolated worktrees when available; assign one integration owner; prohibit concurrent edits to same files.
-5. TEST: run tests, lint, build and applicable evals; record commands, exit status and revision.
-6. REVIEW: use independent code/security review where useful; address findings and rerun checks.
-7. MERGE: create/update PR, verify required checks on exact head, permissions, approvals and branch rules. Merge only when authorized and permitted.
-8. DEPLOY: only with a defined workflow and necessary permissions; otherwise mark N/A or awaiting authorization.
-9. MAINTAIN: observe available signals; file deduplicated follow-ups and feed verified lessons into project knowledge.
-10. RETURN: record outcome and hand control to external scheduler; never spin indefinitely within one Codex session.
+For every multi-step task, follow [TASK_PROGRESS_PROTOCOL](references/TASK_PROGRESS_PROTOCOL.md): reconcile the existing issue/PR and checklist before coding; create stable-ID TODOs tied to acceptance criteria; update statuses at meaningful transitions; mark GitHub checkboxes complete **only after VERIFIED evidence**; persist checkpoints and resume from the first unverified dependency. Never erase user checklist content or claim a GitHub update that was not written. Use [task progress template](assets/templates/task_progress.md) when useful. Follow our independent [behavioral contract](references/BEHAVIOR_CONTRACT.md); no external playbook is required.
 
-## Delegation
-Provide each subagent task ID, role, scope, write boundaries, acceptance criteria, revision, dependencies and output format. Require summary, changed files, commands/results, risks, blockers and next action. Lead validates all results.
+## Practical execution and critical challenge
 
-## Recovery
-Classify transient, defect, spec mismatch, environment, permission or policy failures. Diagnose before retry; bounded backoff for transient errors; replan for defects; resume verified checkpoints. Preserve evidence and mark BLOCKED if unresolved.
+Follow [operational challenge protocol](references/OPERATIONAL_CHALLENGE.md). For authorized tasks, perform real edits and tests rather than stopping at recommendations. Challenge unsupported user or agent assumptions with evidence, and use bounded independent subagent critique only when uncertainty or risk justifies its cost. A single integration owner resolves disagreements using tests and acceptance criteria; do not claim a debate or execution that did not occur.
 
-## Durable state
-If an external store exists, persist task_id, stage, attempt, source SHA, worktree, branch, PR, artifacts, checks, blocker, checkpoint timestamp and next action. Make transitions idempotent. Otherwise emit a handoff record.
+## Execution order
 
-## Completion
-Report issue/PR, exact revision, changes, verification, approvals, deployment status, follow-ups and whether external scheduling exists.
+1. **Discover** — confirm authorization, scope, existing work, baseline and measurable acceptance criteria.
+2. **Design / Plan** — inspect the codebase, reuse existing functionality, assess impact and risks, map criteria to tests, and choose a minimal coherent implementation.
+3. **Build** — implement in bounded increments with appropriate tests. Delegate only if the runtime supports it and scopes do not overlap.
+4. **Verify** — run targeted checks, relevant regression/negative/security checks and trace each criterion to evidence.
+5. **Review** — inspect the actual diff independently where possible, resolve blocking findings and rerun invalidated checks.
+6. **Deliver** — confirm exact-head CI, permissions, approvals and branch protection before authorized merge/deploy.
+7. **Observe / Learn** — verify observable outcome where possible, convert confirmed regressions into tests, and hand off remaining work.
 
-Read `references/WORKFLOW_RULES.md` and `references/HANDOFF_TEMPLATE.md`. Confirm actual Codex version support before relying on native agent roles.
+At each transition, update progress when evidence changes and apply [stage contracts](references/STAGE_CONTRACTS.md) and [quality protocol](references/QUALITY_PROTOCOL.md). A failed gate follows the [recovery matrix](references/RECOVERY_MATRIX.md); never claim PASS without evidence. Scale documentation to risk using [templates](assets/templates).
+
+## Integration contract
+
+**One owner of the lifecycle:** this skill owns SDLC stage selection, acceptance traceability, evidence and handoff. Optional external specialist skills provide *advice for one bounded task*; they do not replace this lifecycle, install themselves, alter project policy or assert final PASS. See [skill routing](references/SKILL_ROUTING.md) and [external skill trust policy](references/EXTERNAL_SKILLS.md).
+
+Before each meaningful task, inventory installed skills, select beneficial specialists, and if none fit, discover and evaluate candidates. Follow [contextual skill acquisition](references/SKILL_ACQUISITION.md): reviewed, pinned, non-destructive project-local skill installation is authorized within the user's delegated scope; request separate approval for privileged, global, costly, policy-changing or code-executing installation. Never blindly run unreviewed remote code. If no safe candidate is available, use native tools and record the gap. For security work, prefer focused review; full audits require explicit authorization and safe isolation.
+
+Use [workflow rules](references/WORKFLOW_RULES.md) and [handoff template](references/HANDOFF_TEMPLATE.md). Record issue/PR, exact SHA, acceptance evidence, CI results, unresolved risks, external skills used and next step. Do not claim background persistence.

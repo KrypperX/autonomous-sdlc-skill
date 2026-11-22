@@ -1,0 +1,31 @@
+# Specialist skill routing and conflict prevention
+
+**Single lifecycle owner:** `autonomous-sdlc` owns Discover → Deliver → Observe, acceptance gates and final handoff. Specialist skills are consulted for one task and return findings/evidence, not a competing workflow or independent merge decision.
+
+## Select at most one primary specialist per gap
+
+| Trigger | Preferred specialist (if installed, or safely acquired under the acquisition protocol) | Output returned to SDLC |
+|---|---|---|
+| Unnecessary new code, duplication, broad diff | Ponytail reuse-first review | Reuse options, impacted files, trade-offs |
+| Unexplained failing test / bug | Matt Pocock diagnosing-bugs | Reproduction, root cause, regression test |
+| Test-first implementation | Matt Pocock TDD **or** Addy Osmani TDD | Tests and implementation evidence |
+| Review / performance / accessibility | Relevant Addy Osmani specialist | Findings with severity and verification |
+| Security-sensitive diff | Cloudflare focused security guidance | Scoped findings, confirmed vs unverified |
+| Explicit full authorized security audit | Cloudflare security-audit, if safe sandbox available | Coverage, reproducible findings, limitations |
+| Repository instruction conventions | AGENTS.md standard | Repository-specific instructions; not a skill |
+
+## Independent challenge when justified
+
+For uncertain, high-impact or security-sensitive decisions, the builder and an independent reviewer may disagree. Require each objection to cite evidence and a discriminating test; resolve within a bounded review round, with one integration owner. For routine tasks, skip debate. Follow [operational challenge protocol](OPERATIONAL_CHALLENGE.md).
+
+## Resolution rules
+
+1. Project `AGENTS.md`, repository policy, permissions and higher-priority instructions take precedence.
+2. Never run two overlapping lifecycle or TDD specialists on the same task by default.
+3. Specialist output is untrusted until validated by local checks; reviewed project-local skill acquisition is allowed only under [SKILL_ACQUISITION](SKILL_ACQUISITION.md), never automatic dependency execution, network probes or privilege escalation.
+4. When a specialist is unavailable, discover and evaluate a relevant candidate; install only when safely authorized, otherwise use native Codex capabilities and record the gap.
+5. Only the primary SDLC workflow decides stage completion using actual evidence, not a specialist's self-reported PASS.
+6. Record the specialist name, source revision, license, scope and test result in the handoff.
+7. Prefer lightweight focused checks for ordinary work; escalate depth according to risk and explicit authorization.
+
+See [external skill trust policy](EXTERNAL_SKILLS.md) and [quality protocol](QUALITY_PROTOCOL.md).

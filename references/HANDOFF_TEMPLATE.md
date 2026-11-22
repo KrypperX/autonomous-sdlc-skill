@@ -1,18 +1,22 @@
 # Task handoff
 
-- Task ID:
-- Source issue / request:
-- Current stage:
-- Source commit SHA:
-- Branch / worktree:
-- PR:
-- Completed changes:
-- Commands and exit codes:
-- CI / eval evidence:
-- Security and policy checks:
-- Risks and blockers:
-- Attempts and root cause:
-- Checkpoint timestamp:
-- Next action:
-- Owner / responsible agent:
-- External scheduler configured: yes / no
+- Task ID / source issue:
+- Current stage / PASS, FAIL, BLOCKED, UNKNOWN:
+- Issue checklist source of truth / last successful update:
+- TODO IDs: VERIFIED / IN PROGRESS / BLOCKED / remaining:
+- Last reconciled head SHA and invalidated evidence:
+- Next single actionable TODO / dependency:
+- Intent and user-visible outcome:
+- Acceptance criteria (ID → evidence → status):
+- Source and exact head SHA:
+- Branch / worktree / PR:
+- Changed files and implementation summary:
+- Verification commands, exit codes, CI URLs:
+- Review findings and disposition:
+- Security / compatibility / rollback:
+- Attempts, root cause, blockers:
+- Deployment and observed outcome (or N/A / UNKNOWN):
+- Specialist inventory and selection / rejected candidates:
+- External skills used or acquired (source, pinned revision, license, reviewed scripts/hooks, scope, installation test, benefit, rollback):
+- Follow-up and next action:
+- External scheduler actually configured: yes / no
