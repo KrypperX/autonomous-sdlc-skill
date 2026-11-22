@@ -12,9 +12,9 @@ class ProgressProtocolTests(unittest.TestCase):
         for token in ['TODO', 'IN PROGRESS', 'BLOCKED', 'DONE', 'VERIFIED', 'N/A', 'resume', 'checkpoint']:
             self.assertIn(token.lower(), protocol.lower())
         self.assertIn('only', protocol.lower())
-    def test_playbook_mapping(self):
-        coverage = (ROOT / 'docs/PLAYBOOK_COVERAGE.md').read_text(encoding='utf-8')
-        for play in ['intent', 'requirements', 'plan mode', 'subagents', 'feedback loop', 'continuous evals', 'PR review', 'hooks', 'CI/CD', 'metrics']:
+    def test_behavioral_contract(self):
+        coverage = (ROOT / 'references/BEHAVIOR_CONTRACT.md').read_text(encoding='utf-8')
+        for play in ['intent', 'reuse', 'checklist', 'feedback', 'review', 'CI', 'checkpoint', 'recover']:
             self.assertIn(play.lower(), coverage.lower())
 
 if __name__ == '__main__':
