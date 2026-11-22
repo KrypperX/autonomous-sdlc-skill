@@ -21,6 +21,37 @@ class LifecycleTests(unittest.TestCase):
             self.assertNotIn('autonomous-sdlc:begin', (root/'AGENTS.md').read_text())
             self.assertTrue((root/'.codex/agents/planner.toml').exists())
 
+    def test_modified_files_survive_uninstall(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = pathlib.Path(temp)
+            install(root, 'project', False, False)
+            dest = root/'.agents/skills/autonomous-sdlc'
+            edited = dest/'references/QUALITY_PROTOCOL.md'
+            edited.write_text(edited.read_text() + '\n# Local customizations\n')
+            uninstall(root, 'project', False)
+            self.assertIn('Local customizations', edited.read_text())
+            self.assertFalse((dest/'SKILL.md').exists())
+
+    def test_modified_files_block_upgrade_without_partial_overwrite(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = pathlib.Path(temp)
+            install(root, 'project', False, False)
+            dest = root/'.agents/skills/autonomous-sdlc'
+            edited = dest/'references/QUALITY_PROTOCOL.md'
+            edited.write_text('user-owned modification')
+            with self.assertRaises(ValueError):
+                install(root, 'project', False, False)
+            self.assertEqual(edited.read_text(), 'user-owned modification')
+
+    def test_clean_upgrade_and_uninstall(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = pathlib.Path(temp)
+            install(root, 'project', False, False)
+            install(root, 'project', False, False)
+            dest = root/'.agents/skills/autonomous-sdlc'
+            uninstall(root, 'project', False)
+            self.assertFalse(dest.exists())
+
     def test_rejects_unrecognized_destination(self):
         with tempfile.TemporaryDirectory() as temp:
             root = pathlib.Path(temp)
