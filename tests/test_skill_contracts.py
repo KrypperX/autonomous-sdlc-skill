@@ -15,7 +15,10 @@ class SkillContractTests(unittest.TestCase):
             self.assertIn(token, data)
     def test_external_skill_safety(self):
         data = (ROOT / "references/EXTERNAL_SKILLS.md").read_text()
-        self.assertIn("auto-install is off by default", data)
+        self.assertIn("Contextual acquisition is permitted only after exact-revision review", data)
+        acquisition = (ROOT / "references/SKILL_ACQUISITION.md").read_text()
+        for phrase in ["Inventory skills", "project-local", "pinned", "smoke test", "rollback"]:
+            self.assertIn(phrase.lower(), acquisition.lower())
         self.assertIn("explicit approval", data)
 
 if __name__ == "__main__":
