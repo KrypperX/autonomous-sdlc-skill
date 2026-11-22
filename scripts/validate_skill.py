@@ -7,11 +7,11 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
     "references/STAGE_CONTRACTS.md", "references/QUALITY_PROTOCOL.md",
     "references/RECOVERY_MATRIX.md", "references/EXTERNAL_SKILLS.md",
-    "references/SKILL_ROUTING.md", "references/TASK_PROGRESS_PROTOCOL.md", "references/WORKFLOW_RULES.md",
+    "references/SKILL_ROUTING.md", "references/BEHAVIOR_CONTRACT.md", "references/TASK_PROGRESS_PROTOCOL.md", "references/WORKFLOW_RULES.md",
     "references/HANDOFF_TEMPLATE.md", "assets/templates/intent.md",
     "assets/templates/spec.md", "assets/templates/plan.md",
     "assets/templates/review.md", "assets/templates/incident.md",
-    "assets/templates/task_progress.md", "docs/PLAYBOOK_COVERAGE.md",
+    "assets/templates/task_progress.md",
 ]
 def validate():
     skill = (ROOT / "SKILL.md").read_text(encoding="utf-8")
