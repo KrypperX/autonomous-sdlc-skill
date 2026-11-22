@@ -14,6 +14,10 @@
 | Explicit full authorized security audit | Cloudflare security-audit, if safe sandbox available | Coverage, reproducible findings, limitations |
 | Repository instruction conventions | AGENTS.md standard | Repository-specific instructions; not a skill |
 
+## Independent challenge when justified
+
+For uncertain, high-impact or security-sensitive decisions, the builder and an independent reviewer may disagree. Require each objection to cite evidence and a discriminating test; resolve within a bounded review round, with one integration owner. For routine tasks, skip debate. Follow [operational challenge protocol](OPERATIONAL_CHALLENGE.md).
+
 ## Resolution rules
 
 1. Project `AGENTS.md`, repository policy, permissions and higher-priority instructions take precedence.
