@@ -41,6 +41,7 @@ class LifecycleTests(unittest.TestCase):
             self.assertTrue((dest/'assets/templates/intent.md').is_file())
             self.assertTrue((dest/'assets/templates/task_progress.md').is_file())
             self.assertTrue((dest/'references/TASK_PROGRESS_PROTOCOL.md').is_file())
+            self.assertTrue((dest/'docs/PLAYBOOK_COVERAGE.md').is_file())
 
 if __name__ == '__main__':
     unittest.main()
