@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install Codex skill with optional managed rules and roles."""
+"""Install skill conservatively; preserve user-managed files."""
 import argparse
 import pathlib
 import shutil
@@ -10,20 +10,39 @@ START = '<!-- autonomous-sdlc:begin -->'
 END = '<!-- autonomous-sdlc:end -->'
 
 def install(project, scope, rules, roles):
-    project = project.resolve()
+    project = pathlib.Path(project).resolve()
     skillbase = pathlib.Path.home()/'.agents/skills' if scope == 'user' else project/'.agents/skills'
     dest = skillbase/'autonomous-sdlc'
     if dest.resolve() == ROOT.resolve():
         raise ValueError('Cannot install onto source directory')
-    dest.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(ROOT/'SKILL.md', dest/'SKILL.md')
-    shutil.copytree(ROOT/'references', dest/'references', dirs_exist_ok=True)
+    # Preflight every requested write before touching anything.
+    existing = dest/'SKILL.md'
+    if dest.exists() and (not existing.exists() or 'name: autonomous-sdlc' not in existing.read_text()):
+        raise ValueError('Destination is not a recognized autonomous-sdlc installation')
     if rules:
         f = project/'AGENTS.md'
         current = f.read_text() if f.exists() else ''
-        block = START + '\n' + ('Follow the autonomous-sdlc skill for end-to-end engineering tasks. Read its references/WORKFLOW_RULES.md. Existing repository and higher-priority policies take precedence.') + '\n' + END
-        if (START in current) != (END in current):
-            raise ValueError('Malformed managed block; refusing to edit')
+        if current.count(START) != current.count(END) or current.count(START) > 1:
+            raise ValueError('Malformed or duplicate managed markers; refusing to edit')
+        if START in current and current.index(START) > current.index(END):
+            raise ValueError('Managed markers out of order')
+    # Install only owned files. Never delete arbitrary files in destination.
+    dest.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(ROOT/'SKILL.md', dest/'SKILL.md')
+    refs = dest/'references'
+    refs.mkdir(exist_ok=True)
+    for source in (ROOT/'references').glob('*.md'):
+        shutil.copy2(source, refs/source.name)
+    assets = dest/'assets/templates'
+    assets.mkdir(parents=True, exist_ok=True)
+    for source in (ROOT/'assets/templates').glob('*.md'):
+        shutil.copy2(source, assets/source.name)
+    if rules:
+        block = START + '\n' + (
+            'For engineering tasks, use the autonomous-sdlc skill and its '
+            'references/STAGE_CONTRACTS.md, QUALITY_PROTOCOL.md and WORKFLOW_RULES.md. '
+            'Existing repository and higher-priority policies take precedence.'
+        ) + '\n' + END
         if START in current:
             a = current.index(START)
             b = current.index(END) + len(END)
@@ -40,6 +59,7 @@ def install(project, scope, rules, roles):
                 print('SKIP existing role:', target, file=sys.stderr)
                 continue
             shutil.copy2(src, target)
+        print('Note: agent role templates require runtime-specific compatibility verification')
     print('Installed skill:', dest)
 
 if __name__ == '__main__':
