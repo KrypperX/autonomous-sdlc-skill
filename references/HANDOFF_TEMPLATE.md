@@ -16,6 +16,7 @@
 - Security / compatibility / rollback:
 - Attempts, root cause, blockers:
 - Deployment and observed outcome (or N/A / UNKNOWN):
-- External skills used (source, revision, approval, license):
+- Specialist inventory and selection / rejected candidates:
+- External skills used or acquired (source, pinned revision, license, reviewed scripts/hooks, scope, installation test, benefit, rollback):
 - Follow-up and next action:
 - External scheduler actually configured: yes / no
