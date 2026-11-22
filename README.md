@@ -1,29 +1,38 @@
 # Autonomous SDLC — Codex Skill
 
-Evidence-driven, risk-adaptive software delivery skill: Discover → Design → Plan → Build → Verify → Review → Deliver → Observe → Feedback.
+A single, evidence-driven Codex skill for Discover → Design → Plan → Build → Verify → Review → Deliver → Observe → Feedback. **No Engine, MCP server or background scheduler.**
 
-**This is a skill, not a daemon, MCP server, scheduler or background orchestrator.** Existing repository policies and CI remain authoritative.
+## Architecture
 
-## Install
+| Layer | Format | Responsibility |
+|---|---|---|
+| Skill entry point | `SKILL.md` (Markdown + YAML front matter) | Routing and lifecycle |
+| Policies | `references/*.md` | Stage gates, security, quality, recovery and specialist selection |
+| Artifacts | `assets/templates/*.md` | Optional risk-scaled evidence |
+| Agent role templates | `agents/*.toml` | Optional Codex configuration, subject to runtime compatibility |
+| Installer, checks and tests | Python standard library | Safe local install and offline validation |
+| CI | GitHub Actions YAML | Static and installer checks |
+
+Specialist skills from Cloudflare, Ponytail, Matt Pocock and Addy Osmani are **optional**, not bundled. See [skill routing](references/SKILL_ROUTING.md) and [external trust policy](references/EXTERNAL_SKILLS.md). AGENTS.md is a repository-instruction standard, not an additional skill.
+
+## Installation
 
 ```bash
 git clone https://github.com/KrypperX/autonomous-sdlc-skill.git
 cd autonomous-sdlc-skill
 python3 scripts/install.py --scope user
-# Optional: apply managed repository rules and agent role templates
-python3 scripts/install.py --scope user --project /path/to/repo --rules --roles
+# Optional project rules and role templates, only after review:
+python3 scripts/install.py --scope project --project /path/to/repo --rules --roles
 ```
 
-Use in Codex: `Use the autonomous-sdlc skill to complete issue #123 with acceptance evidence and review.`
+Run `python3 scripts/validate_skill.py && python3 -m unittest discover -s tests -v`.
 
-## Quality system
-- [Stage contracts](references/STAGE_CONTRACTS.md): input/output/exit gates
-- [Quality protocol](references/QUALITY_PROTOCOL.md): traceability, tests and independent review
-- [Recovery matrix](references/RECOVERY_MATRIX.md): diagnose and bounded retries
-- [External skills](references/EXTERNAL_SKILLS.md): trusted discovery, manual approval and compatibility
-- [Behavioral evaluation plan](docs/BEHAVIORAL_EVAL_PLAN.md): scenarios and release criteria
-- [Templates](assets/templates): intent, spec, plan, review, incident
+## Using Codex
 
-Run offline checks: `python3 scripts/validate_skill.py && python3 -m unittest discover -s tests -v`.
+`Use autonomous-sdlc to implement issue #123, verify each acceptance criterion and review the exact diff.`
 
-**Status:** Structural tests exist; Codex runtime/subagent compatibility and behavioral evaluations must still be executed before claiming production readiness. External skills are not bundled or installed automatically.
+For small changes, keep evidence concise. For high-risk changes, use written spec, rollback plan and deeper tests. Repository policies and required CI checks always take precedence.
+
+## Readiness
+
+Offline structure/installer tests are not behavioral evaluations. Real Codex skill activation, native subagents, external skill interoperability and behavioral evaluation scenarios must be tested before production-readiness claims. See [evaluation plan](docs/BEHAVIORAL_EVAL_PLAN.md).
