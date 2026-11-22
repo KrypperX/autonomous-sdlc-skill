@@ -7,7 +7,7 @@ START = '<!-- autonomous-sdlc:begin -->'
 END = '<!-- autonomous-sdlc:end -->'
 OWNED_REFS = [
     'STAGE_CONTRACTS.md', 'QUALITY_PROTOCOL.md', 'RECOVERY_MATRIX.md',
-    'EXTERNAL_SKILLS.md', 'SKILL_ROUTING.md', 'BEHAVIOR_CONTRACT.md', 'TASK_PROGRESS_PROTOCOL.md', 'WORKFLOW_RULES.md', 'HANDOFF_TEMPLATE.md',
+    'EXTERNAL_SKILLS.md', 'SKILL_ROUTING.md', 'BEHAVIOR_CONTRACT.md', 'SKILL_ACQUISITION.md', 'TASK_PROGRESS_PROTOCOL.md', 'WORKFLOW_RULES.md', 'HANDOFF_TEMPLATE.md',
 ]
 OWNED_DOCS = ['BEHAVIORAL_EVAL_PLAN.md']
 OWNED_TEMPLATES = ['intent.md', 'spec.md', 'plan.md', 'review.md', 'incident.md', 'task_progress.md']
