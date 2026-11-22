@@ -7,7 +7,7 @@ class ProgressProtocolTests(unittest.TestCase):
     def test_progress_contract(self):
         skill = (ROOT / 'SKILL.md').read_text(encoding='utf-8')
         protocol = (ROOT / 'references/TASK_PROGRESS_PROTOCOL.md').read_text(encoding='utf-8')
-        for name in ['TASK_PROGRESS_PROTOCOL.md', 'PLAYBOOK_COVERAGE.md', 'task_progress.md']:
+        for name in ['TASK_PROGRESS_PROTOCOL.md', 'BEHAVIOR_CONTRACT.md', 'task_progress.md']:
             self.assertIn(name, skill)
         for token in ['TODO', 'IN PROGRESS', 'BLOCKED', 'DONE', 'VERIFIED', 'N/A', 'resume', 'checkpoint']:
             self.assertIn(token.lower(), protocol.lower())
