@@ -7,7 +7,7 @@ START = '<!-- autonomous-sdlc:begin -->'
 END = '<!-- autonomous-sdlc:end -->'
 OWNED_REFS = [
     'STAGE_CONTRACTS.md', 'QUALITY_PROTOCOL.md', 'RECOVERY_MATRIX.md',
-    'EXTERNAL_SKILLS.md', 'WORKFLOW_RULES.md', 'HANDOFF_TEMPLATE.md',
+    'EXTERNAL_SKILLS.md', 'SKILL_ROUTING.md', 'WORKFLOW_RULES.md', 'HANDOFF_TEMPLATE.md',
 ]
 OWNED_TEMPLATES = ['intent.md', 'spec.md', 'plan.md', 'review.md', 'incident.md']
 
