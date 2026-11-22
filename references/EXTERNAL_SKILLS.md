@@ -21,6 +21,26 @@ npx skills add https://github.com/cloudflare/security-audit-skill --skill securi
 - Avoid duplicate audits: run focused checks for ordinary changes and full audits only when justified by scope and risk. Record coverage, revision and results in SDLC handoff.
 - This skill remains an optional dependency; the core Autonomous SDLC skill must work without it.
 
+
+## Additional vetted candidates (not bundled or auto-installed)
+
+| Source | Selective capability | Integration policy |
+|---|---|---|
+| https://github.com/DietrichGebert/ponytail | Reuse-first design, minimal coherent changes, change-impact review and repo audit | Optional specialist; avoid global hooks or blanket instructions unless reviewed for conflicts. Do not prioritize fewer lines over safety, accessibility or tests. |
+| https://github.com/mattpocock/skills | `tdd`, `diagnosing-bugs`, `grill-with-docs`, `improve-codebase-architecture` | Invoke individually when task-relevant. Do not adopt its issue-tracker or lifecycle orchestration by default. |
+| https://github.com/agentsmd/agents.md | Standard format for repository-wide agent instructions | Reference standard, **not** an installable quality skill. Keep AGENTS.md concise, repo-specific and non-conflicting. |
+| https://github.com/addyosmani/agent-skills | `code-review-and-quality`, `test-driven-development`, `constraint-driven-development`, accessibility and performance | Use targeted specialists, not a competing full SDLC workflow. Verify shared references are present: per-skill installation may omit repo-level references. |
+
+### Routing by gap
+- Existing capability, unnecessary abstractions, or duplicated code → consider Ponytail's reuse-first review.
+- Bug without confirmed cause → consider Matt Pocock's diagnosing-bugs.
+- Weak test feedback → consider Matt Pocock TDD **or** Addy Osmani test-driven-development, not both by default.
+- Review quality or measurable quality bar → consider Addy Osmani code-review-and-quality / constraint-driven-development.
+- Repository agent context → use AGENTS.md standard; do not install it as a skill.
+- Security-sensitive change → use focused review; Cloudflare full security audit only when explicitly scoped.
+
+Before enabling any of these: inspect the exact upstream SKILL.md, scripts, hooks, license and compatibility with the target Codex version. Record source revision and any installation approval. Avoid copying upstream text wholesale or silently executing third-party code.
+
 ## Other sources to inspect
 - Official Codex skills documentation: https://developers.openai.com/codex/skills
 - Anthropic public skills: https://github.com/anthropics/skills (verify runtime compatibility)
