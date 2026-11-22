@@ -37,6 +37,7 @@ class LifecycleTests(unittest.TestCase):
             install(root, 'project', False, False)
             dest = root/'.agents/skills/autonomous-sdlc'
             self.assertTrue((dest/'references/STAGE_CONTRACTS.md').is_file())
+            self.assertTrue((dest/'references/SKILL_ROUTING.md').is_file())
             self.assertTrue((dest/'assets/templates/intent.md').is_file())
 
 if __name__ == '__main__':
