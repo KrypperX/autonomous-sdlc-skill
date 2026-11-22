@@ -18,4 +18,4 @@
 
 16. At start/resume, reconcile existing issue TODOs and progress against current repo/PR/CI state; preserve user-authored checklist items.
 17. Create stable-ID, dependency-aware work items; mark checkboxes only when VERIFIED with evidence. Persist meaningful transitions, blockers and a next action at each session boundary.
-18. For playbook alignment, consult docs/PLAYBOOK_COVERAGE.md; distinguish behavioral guidance from externally enforced hooks, monitoring and CI.
+18. Follow our own references/BEHAVIOR_CONTRACT.md; distinguish behavioral guidance from externally enforced hooks, monitoring and CI.
