@@ -9,6 +9,7 @@ OWNED_REFS = [
     'STAGE_CONTRACTS.md', 'QUALITY_PROTOCOL.md', 'RECOVERY_MATRIX.md',
     'EXTERNAL_SKILLS.md', 'SKILL_ROUTING.md', 'TASK_PROGRESS_PROTOCOL.md', 'WORKFLOW_RULES.md', 'HANDOFF_TEMPLATE.md',
 ]
+OWNED_DOCS = ['PLAYBOOK_COVERAGE.md', 'BEHAVIORAL_EVAL_PLAN.md']
 OWNED_TEMPLATES = ['intent.md', 'spec.md', 'plan.md', 'review.md', 'incident.md', 'task_progress.md']
 
 def uninstall(project, scope, rules):
@@ -23,7 +24,9 @@ def uninstall(project, scope, rules):
             (dest/'references'/name).unlink(missing_ok=True)
         for name in OWNED_TEMPLATES:
             (dest/'assets/templates'/name).unlink(missing_ok=True)
-        for directory in [dest/'assets/templates', dest/'assets', dest/'references', dest]:
+        for name in OWNED_DOCS:
+            (dest/'docs'/name).unlink(missing_ok=True)
+        for directory in [dest/'assets/templates', dest/'assets', dest/'references', dest/'docs', dest]:
             if directory.is_dir() and not any(directory.iterdir()):
                 directory.rmdir()
     if rules:
