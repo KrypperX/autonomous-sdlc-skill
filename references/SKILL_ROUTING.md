@@ -4,7 +4,7 @@
 
 ## Select at most one primary specialist per gap
 
-| Trigger | Preferred specialist (only if installed and approved) | Output returned to SDLC |
+| Trigger | Preferred specialist (if installed, or safely acquired under the acquisition protocol) | Output returned to SDLC |
 |---|---|---|
 | Unnecessary new code, duplication, broad diff | Ponytail reuse-first review | Reuse options, impacted files, trade-offs |
 | Unexplained failing test / bug | Matt Pocock diagnosing-bugs | Reproduction, root cause, regression test |
@@ -18,8 +18,8 @@
 
 1. Project `AGENTS.md`, repository policy, permissions and higher-priority instructions take precedence.
 2. Never run two overlapping lifecycle or TDD specialists on the same task by default.
-3. Specialist output is untrusted until validated by local checks; no automatic dependency installation, network probes or privilege escalation.
-4. An unavailable/incompatible specialist is optional: use native Codex capabilities and record the gap.
+3. Specialist output is untrusted until validated by local checks; reviewed project-local skill acquisition is allowed only under [SKILL_ACQUISITION](SKILL_ACQUISITION.md), never automatic dependency execution, network probes or privilege escalation.
+4. When a specialist is unavailable, discover and evaluate a relevant candidate; install only when safely authorized, otherwise use native Codex capabilities and record the gap.
 5. Only the primary SDLC workflow decides stage completion using actual evidence, not a specialist's self-reported PASS.
 6. Record the specialist name, source revision, license, scope and test result in the handoff.
 7. Prefer lightweight focused checks for ordinary work; escalate depth according to risk and explicit authorization.
