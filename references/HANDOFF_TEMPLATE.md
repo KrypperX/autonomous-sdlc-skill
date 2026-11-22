@@ -2,6 +2,10 @@
 
 - Task ID / source issue:
 - Current stage / PASS, FAIL, BLOCKED, UNKNOWN:
+- Issue checklist source of truth / last successful update:
+- TODO IDs: VERIFIED / IN PROGRESS / BLOCKED / remaining:
+- Last reconciled head SHA and invalidated evidence:
+- Next single actionable TODO / dependency:
 - Intent and user-visible outcome:
 - Acceptance criteria (ID → evidence → status):
 - Source and exact head SHA:
