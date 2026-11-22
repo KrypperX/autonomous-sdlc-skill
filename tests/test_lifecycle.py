@@ -39,6 +39,8 @@ class LifecycleTests(unittest.TestCase):
             self.assertTrue((dest/'references/STAGE_CONTRACTS.md').is_file())
             self.assertTrue((dest/'references/SKILL_ROUTING.md').is_file())
             self.assertTrue((dest/'assets/templates/intent.md').is_file())
+            self.assertTrue((dest/'assets/templates/task_progress.md').is_file())
+            self.assertTrue((dest/'references/TASK_PROGRESS_PROTOCOL.md').is_file())
 
 if __name__ == '__main__':
     unittest.main()
