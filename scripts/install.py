@@ -37,6 +37,10 @@ def install(project, scope, rules, roles):
     assets.mkdir(parents=True, exist_ok=True)
     for source in (ROOT/'assets/templates').glob('*.md'):
         shutil.copy2(source, assets/source.name)
+    docs = dest/'docs'
+    docs.mkdir(exist_ok=True)
+    for source in (ROOT/'docs').glob('*.md'):
+        shutil.copy2(source, docs/source.name)
     if rules:
         block = START + '\n' + (
             'For engineering tasks, use the autonomous-sdlc skill and its '
