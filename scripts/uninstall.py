@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Remove owned files only; preserve user customizations."""
 import argparse
+import hashlib
+import json
 import pathlib
 
 START = '<!-- autonomous-sdlc:begin -->'
@@ -19,16 +21,34 @@ def uninstall(project, scope, rules):
         marker = dest/'SKILL.md'
         if not marker.is_file() or 'name: autonomous-sdlc' not in marker.read_text():
             raise ValueError('Refusing to remove unrecognized skill')
-        marker.unlink()
-        for name in OWNED_REFS:
-            (dest/'references'/name).unlink(missing_ok=True)
-        for name in OWNED_TEMPLATES:
-            (dest/'assets/templates'/name).unlink(missing_ok=True)
-        for name in OWNED_DOCS:
-            (dest/'docs'/name).unlink(missing_ok=True)
-        for directory in [dest/'assets/templates', dest/'assets', dest/'references', dest/'docs', dest]:
-            if directory.is_dir() and not any(directory.iterdir()):
+        manifest_path = dest/'.autonomous-sdlc-manifest.json'
+        if not manifest_path.is_file():
+            raise ValueError('Missing ownership manifest; refusing unsafe legacy uninstall')
+        manifest = json.loads(manifest_path.read_text())
+        if manifest.get('version') != 1 or not isinstance(manifest.get('files'), dict):
+            raise ValueError('Invalid ownership manifest')
+        preserved = []
+        for rel, expected in manifest['files'].items():
+            relative = pathlib.PurePosixPath(rel)
+            if (relative.is_absolute() or '..' in relative.parts or
+                    not isinstance(expected, str) or len(expected) != 64):
+                raise ValueError('Unsafe manifest entry')
+            target = dest/rel
+            if target.is_symlink():
+                preserved.append(rel)
+            elif target.is_file():
+                if hashlib.sha256(target.read_bytes()).hexdigest() == expected:
+                    target.unlink()
+                else:
+                    preserved.append(rel)
+        if preserved:
+            print('Preserved modified files:', ', '.join(preserved))
+        manifest_path.unlink()
+        for directory in sorted((p for p in dest.rglob('*') if p.is_dir()), key=lambda p: len(p.parts), reverse=True):
+            if not any(directory.iterdir()):
                 directory.rmdir()
+        if dest.is_dir() and not any(dest.iterdir()):
+            dest.rmdir()
     if rules:
         f = project/'AGENTS.md'
         if f.exists():
