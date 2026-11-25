@@ -9,6 +9,9 @@ Choose tests based on risk: unit, integration, contract, end-to-end, concurrency
 ## Review
 Review independently where possible. Inspect correctness, invariants, error handling, resource cleanup, race conditions, API contracts, secrets, auth, supply chain, compatibility, observability and documentation. Label findings BLOCKER / MAJOR / MINOR / INFO. Fix BLOCKER and MAJOR before completion unless the governing policy explicitly permits documented exceptions.
 
+### Agent and terminal surfaces
+When a change touches an agent harness, tools or terminal UI, inspect only the relevant boundaries: untrusted user/repository/web/tool content; tool argument validation and filesystem or shell authority; network binding, authentication and resource limits for exposed servers; session/log permissions and retention; terminal control-sequence escaping for untrusted output; and cancellation reaching provider requests and tools. For terminal UI changes, also check keyboard/focus behavior, resizing and Unicode display width. Treat scaffold examples and their dependencies as examples until checked against the target project and current upstream documentation. These checks are conditional; ordinary tasks do not need an agent/TUI audit.
+
 ## Evidence
 Capture command, exit code, environment, exact SHA, CI run URL, relevant logs and limitations. Never fabricate runs, coverage or reviewer independence. Confirm post-fix checks against the changed head.
 

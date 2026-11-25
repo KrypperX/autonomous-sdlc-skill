@@ -1,0 +1,1252 @@
+{
+  "schema_version": 1,
+  "inventory": {
+    "captured_at": "2026-11-25",
+    "roots": [
+      "~/.codex/skills",
+      "~/.agents/skills"
+    ],
+    "physical_skill_md_files": 100,
+    "unique_skill_names": 81,
+    "duplicate_definitions": 19,
+    "broken_symlinks_excluded_count": 4,
+    "plugin_cache_excluded": true
+  },
+  "policy": {
+    "licensed_snapshots_only": true,
+    "scripts_are_reference_only": true,
+    "auto_execute_archive_content": false,
+    "runtime_dependencies_added": false,
+    "embedded_skill_files_are_archived_for_read_on_demand": true
+  },
+  "sources": {
+    "context-engineering-collection": {
+      "archive": "third_party/context-engineering-collection.tar.gz",
+      "archive_sha256": "b92496c58e52f57a3733882c5b2eaadbebc692c7d6f3eab6d2a8cece41548ea3",
+      "file_count": 520,
+      "source_tree_sha256": "c0f07ea6c079d16d38f4f4109e2a977a8aff5c6518983ca9c603c5a8bf343f67",
+      "license": "MIT",
+      "license_member": "context-engineering-collection/LICENSE",
+      "source_url": "https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering",
+      "source_revision": "installed local snapshot; no commit recorded",
+      "skill_count": 25
+    },
+    "mattpocock-skills": {
+      "archive": "third_party/mattpocock-skills.tar.gz",
+      "archive_sha256": "67fb407bed09ba0815c8611c3347821482002058b9aac0bee570976962dfa12b",
+      "file_count": 110,
+      "source_tree_sha256": "096d79d08058d841d45a97f88991955604befbd68038be5855622de817fa4d9d",
+      "license": "MIT",
+      "license_member": "mattpocock-skills/LICENSE",
+      "source_url": "https://github.com/mattpocock/skills",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823",
+      "skill_count": 39
+    },
+    "opentui": {
+      "archive": "third_party/opentui.tar.gz",
+      "archive_sha256": "5b0e3c27397d9d022cb2b94ae65ab46d9b155dca82f0f65cc9d65329d42d9902",
+      "file_count": 141,
+      "source_tree_sha256": "f05eeab77a344fd591b4c227391b6bcc6462de8c898d5218b8b19786a555f651",
+      "license": "MIT",
+      "license_member": "opentui/LICENSE",
+      "source_url": "https://opentui.com/.well-known/agent-skills/opentui.tar.gz",
+      "source_revision": "installed archive sha256:576bf5cdc06115f2e0e3b9d5bd21dbed294f1289d1d96c4cb209e77d1d037054; docs include 0.9.5",
+      "skill_count": 1
+    },
+    "tui-design": {
+      "archive": "third_party/tui-design.tar.gz",
+      "archive_sha256": "d79f5b09a0675ba037ecf4467d5b841eff9cf67ae1e208b31dd8c5ddb136cfef",
+      "file_count": 12,
+      "source_tree_sha256": "4f316e4b85eb16298d056c16c512ca2ce96a5864f766a813befdfb4dfd5dc607",
+      "license": "MIT",
+      "license_member": "tui-design/LICENSE",
+      "source_url": "https://github.com/gfargo/tui-design-skill",
+      "source_revision": "716633c308ac847f96741fac37c5c11bb234df8e",
+      "skill_count": 1
+    },
+    "openrouter-skills": {
+      "source_url": "https://github.com/OpenRouterTeam/skills",
+      "source_revision": "a110aad6072364da5e8017efc7a7873262164b11",
+      "license_status": "no redistribution grant found in reviewed source",
+      "packaged": false
+    },
+    "unknown-local-origin": {
+      "source_url": null,
+      "license_status": "not recorded locally; source remains installed-only",
+      "packaged": false
+    },
+    "codex-system": {
+      "source_url": "Codex-managed built-in skill directory",
+      "license_status": "system-managed; intentionally not copied",
+      "packaged": false
+    },
+    "this-product": {
+      "source_url": "https://github.com/KrypperX/autonomous-sdlc-skill",
+      "license_status": "repository-owned; entrypoint already lives in this product",
+      "packaged": false
+    }
+  },
+  "skills": [
+    {
+      "id": "advanced-evaluation",
+      "roles": [
+        "cross-cutting",
+        "qa"
+      ],
+      "stages": [
+        "cross-stage",
+        "test"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/advanced-evaluation/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "api-and-interface-design",
+      "roles": [
+        "architect"
+      ],
+      "stages": [
+        "design"
+      ],
+      "availability": "runtime-only-license-unverified",
+      "source_id": "unknown-local-origin",
+      "license_status": "no redistribution grant recorded locally",
+      "local_runtime_path": "api-and-interface-design"
+    },
+    {
+      "id": "ask-matt",
+      "roles": [
+        "product-manager"
+      ],
+      "stages": [
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/ask-matt/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "autonomous-sdlc",
+      "roles": [
+        "cross-cutting"
+      ],
+      "stages": [
+        "cross-stage"
+      ],
+      "availability": "repo-owned",
+      "source_id": "this-product"
+    },
+    {
+      "id": "bdi-mental-states",
+      "roles": [
+        "architect"
+      ],
+      "stages": [
+        "design"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/bdi-mental-states/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "book-sft-pipeline",
+      "roles": [
+        "developer",
+        "outside-sdlc"
+      ],
+      "stages": [
+        "build",
+        "outside-sdlc"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/examples/book-sft-pipeline/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "chief-of-staff",
+      "roles": [
+        "product-manager"
+      ],
+      "stages": [
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/chief-of-staff/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "claude-handoff",
+      "roles": [
+        "operations"
+      ],
+      "stages": [
+        "maintain"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/claude-handoff/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "code-review",
+      "roles": [
+        "qa"
+      ],
+      "stages": [
+        "test"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/code-review/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "code-review-and-quality",
+      "roles": [
+        "qa"
+      ],
+      "stages": [
+        "test"
+      ],
+      "availability": "runtime-only-license-unverified",
+      "source_id": "unknown-local-origin",
+      "license_status": "no redistribution grant recorded locally",
+      "local_runtime_path": "code-review-and-quality"
+    },
+    {
+      "id": "code-simplification",
+      "roles": [
+        "developer"
+      ],
+      "stages": [
+        "build"
+      ],
+      "availability": "runtime-only-license-unverified",
+      "source_id": "unknown-local-origin",
+      "license_status": "no redistribution grant recorded locally",
+      "local_runtime_path": "code-simplification"
+    },
+    {
+      "id": "codebase-design",
+      "roles": [
+        "architect"
+      ],
+      "stages": [
+        "design"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/codebase-design/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "comprehensive-research-agent",
+      "roles": [
+        "cross-cutting",
+        "product-manager"
+      ],
+      "stages": [
+        "cross-stage",
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/examples/interleaved-thinking/generated_skills/comprehensive-research-agent/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "context-compression",
+      "roles": [
+        "cross-cutting",
+        "operations"
+      ],
+      "stages": [
+        "cross-stage",
+        "maintain"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/context-compression/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "context-degradation",
+      "roles": [
+        "cross-cutting",
+        "qa"
+      ],
+      "stages": [
+        "cross-stage",
+        "test"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/context-degradation/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "context-engineering-collection",
+      "roles": [
+        "cross-cutting",
+        "operations"
+      ],
+      "stages": [
+        "cross-stage",
+        "maintain"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "context-fundamentals",
+      "roles": [
+        "cross-cutting"
+      ],
+      "stages": [
+        "cross-stage"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/context-fundamentals/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "context-optimization",
+      "roles": [
+        "cross-cutting",
+        "operations"
+      ],
+      "stages": [
+        "cross-stage",
+        "maintain"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/context-optimization/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "create-agent-tui",
+      "roles": [
+        "architect",
+        "developer"
+      ],
+      "stages": [
+        "build",
+        "design"
+      ],
+      "availability": "runtime-only-license-unverified",
+      "source_id": "openrouter-skills",
+      "source_url": "https://github.com/OpenRouterTeam/skills/tree/a110aad6072364da5e8017efc7a7873262164b11/skills/create-agent-tui",
+      "source_revision": "a110aad6072364da5e8017efc7a7873262164b11",
+      "license_status": "no redistribution grant recorded locally"
+    },
+    {
+      "id": "diagnosing-bugs",
+      "roles": [
+        "qa"
+      ],
+      "stages": [
+        "test"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/diagnosing-bugs/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "digital-brain",
+      "roles": [
+        "operations",
+        "outside-sdlc"
+      ],
+      "stages": [
+        "maintain",
+        "outside-sdlc"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/examples/digital-brain-skill/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "domain-modeling",
+      "roles": [
+        "architect",
+        "product-manager"
+      ],
+      "stages": [
+        "design",
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/domain-modeling/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "evaluation",
+      "roles": [
+        "cross-cutting",
+        "qa"
+      ],
+      "stages": [
+        "cross-stage",
+        "test"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/evaluation/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "filesystem-context",
+      "roles": [
+        "cross-cutting",
+        "operations"
+      ],
+      "stages": [
+        "cross-stage",
+        "maintain"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/filesystem-context/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "frontend-ui-engineering",
+      "roles": [
+        "architect",
+        "developer"
+      ],
+      "stages": [
+        "build",
+        "design"
+      ],
+      "availability": "runtime-only-license-unverified",
+      "source_id": "unknown-local-origin",
+      "license_status": "no redistribution grant recorded locally",
+      "local_runtime_path": "frontend-ui-engineering"
+    },
+    {
+      "id": "git-guardrails-claude-code",
+      "roles": [
+        "release"
+      ],
+      "stages": [
+        "deploy"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/git-guardrails-claude-code/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "grill-me",
+      "roles": [
+        "product-manager"
+      ],
+      "stages": [
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/grill-me/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "grill-with-docs",
+      "roles": [
+        "product-manager"
+      ],
+      "stages": [
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/grill-with-docs/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "grilling",
+      "roles": [
+        "product-manager"
+      ],
+      "stages": [
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/grilling/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "handoff",
+      "roles": [
+        "documentation",
+        "operations"
+      ],
+      "stages": [
+        "cross-stage",
+        "maintain"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/handoff/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "harness-engineering",
+      "roles": [
+        "architect",
+        "cross-cutting"
+      ],
+      "stages": [
+        "cross-stage",
+        "design"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/harness-engineering/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "hosted-agents",
+      "roles": [
+        "architect",
+        "operations"
+      ],
+      "stages": [
+        "design",
+        "maintain"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/hosted-agents/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "imagegen",
+      "roles": [
+        "cross-cutting"
+      ],
+      "stages": [
+        "cross-stage"
+      ],
+      "availability": "system-managed",
+      "source_id": "codex-system"
+    },
+    {
+      "id": "implement",
+      "roles": [
+        "developer"
+      ],
+      "stages": [
+        "build"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/implement/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "implement-spec",
+      "roles": [
+        "developer"
+      ],
+      "stages": [
+        "build"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/implement-spec/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "improve-codebase-architecture",
+      "roles": [
+        "architect"
+      ],
+      "stages": [
+        "design"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/improve-codebase-architecture/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "instruction-surface-security",
+      "roles": [
+        "cross-cutting",
+        "operations"
+      ],
+      "stages": [
+        "cross-stage",
+        "maintain"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/instruction-surface-security/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "latent-briefing",
+      "roles": [
+        "cross-cutting"
+      ],
+      "stages": [
+        "cross-stage"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/latent-briefing/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "long-horizon-prompting",
+      "roles": [
+        "cross-cutting",
+        "operations"
+      ],
+      "stages": [
+        "cross-stage",
+        "maintain"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/long-horizon-prompting/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "loop-me",
+      "roles": [
+        "product-manager"
+      ],
+      "stages": [
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/loop-me/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "memory-systems",
+      "roles": [
+        "cross-cutting",
+        "operations"
+      ],
+      "stages": [
+        "cross-stage",
+        "maintain"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/memory-systems/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "migrate-to-shoehorn",
+      "roles": [
+        "developer"
+      ],
+      "stages": [
+        "build"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/migrate-to-shoehorn/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "multi-agent-patterns",
+      "roles": [
+        "architect",
+        "cross-cutting"
+      ],
+      "stages": [
+        "cross-stage",
+        "design"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/multi-agent-patterns/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "openai-docs",
+      "roles": [
+        "cross-cutting"
+      ],
+      "stages": [
+        "cross-stage"
+      ],
+      "availability": "system-managed",
+      "source_id": "codex-system"
+    },
+    {
+      "id": "opentui",
+      "roles": [
+        "architect",
+        "developer",
+        "qa"
+      ],
+      "stages": [
+        "build",
+        "design",
+        "test"
+      ],
+      "availability": "bundled",
+      "source_id": "opentui",
+      "archive_root": "opentui/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "sha256:576bf5cdc06115f2e0e3b9d5bd21dbed294f1289d1d96c4cb209e77d1d037054"
+    },
+    {
+      "id": "ponytail",
+      "roles": [
+        "developer"
+      ],
+      "stages": [
+        "build"
+      ],
+      "availability": "runtime-only-license-unverified",
+      "source_id": "unknown-local-origin",
+      "license_status": "no redistribution grant recorded locally",
+      "local_runtime_path": "ponytail"
+    },
+    {
+      "id": "pr",
+      "roles": [
+        "release"
+      ],
+      "stages": [
+        "deploy"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/pr/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "project-development",
+      "roles": [
+        "architect",
+        "product-manager"
+      ],
+      "stages": [
+        "design",
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/project-development/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "prototype",
+      "roles": [
+        "architect"
+      ],
+      "stages": [
+        "design"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/prototype/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "reasoning-trace-optimizer",
+      "roles": [
+        "outside-sdlc",
+        "qa"
+      ],
+      "stages": [
+        "outside-sdlc",
+        "test"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/examples/interleaved-thinking/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "research",
+      "roles": [
+        "product-manager"
+      ],
+      "stages": [
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/research/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "retro",
+      "roles": [
+        "operations"
+      ],
+      "stages": [
+        "maintain"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/retro/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "reverse-engineer-anything",
+      "roles": [
+        "developer"
+      ],
+      "stages": [
+        "build"
+      ],
+      "availability": "runtime-only-origin-unverified",
+      "source_id": "unknown-local-origin",
+      "license_status": "origin and redistribution grant not recorded locally",
+      "local_runtime_path": "reverse-engineer-anything"
+    },
+    {
+      "id": "review-agent",
+      "roles": [
+        "qa"
+      ],
+      "stages": [
+        "test"
+      ],
+      "availability": "system-managed",
+      "source_id": "codex-system"
+    },
+    {
+      "id": "scaffold-exercises",
+      "roles": [
+        "developer"
+      ],
+      "stages": [
+        "build"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/scaffold-exercises/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "security-audit",
+      "roles": [
+        "qa"
+      ],
+      "stages": [
+        "test"
+      ],
+      "availability": "runtime-only-license-unverified",
+      "source_id": "unknown-local-origin",
+      "license_status": "no redistribution grant recorded locally",
+      "local_runtime_path": "security-audit"
+    },
+    {
+      "id": "self-improvement-loops",
+      "roles": [
+        "cross-cutting",
+        "operations"
+      ],
+      "stages": [
+        "cross-stage",
+        "maintain"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/self-improvement-loops/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "self-managed-context",
+      "roles": [
+        "cross-cutting",
+        "operations"
+      ],
+      "stages": [
+        "cross-stage",
+        "maintain"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/self-managed-context/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "setup-matt-pocock-skills",
+      "roles": [
+        "release"
+      ],
+      "stages": [
+        "deploy"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/setup-matt-pocock-skills/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "setup-pre-commit",
+      "roles": [
+        "developer",
+        "release"
+      ],
+      "stages": [
+        "build",
+        "deploy"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/setup-pre-commit/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "setup-ts-deep-modules",
+      "roles": [
+        "architect"
+      ],
+      "stages": [
+        "design"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/setup-ts-deep-modules/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "skill-creator",
+      "roles": [
+        "documentation"
+      ],
+      "stages": [
+        "cross-stage"
+      ],
+      "availability": "system-managed",
+      "source_id": "codex-system"
+    },
+    {
+      "id": "skill-installer",
+      "roles": [
+        "cross-cutting"
+      ],
+      "stages": [
+        "cross-stage"
+      ],
+      "availability": "system-managed",
+      "source_id": "codex-system"
+    },
+    {
+      "id": "skill-template",
+      "roles": [
+        "documentation"
+      ],
+      "stages": [
+        "cross-stage"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/template/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "software-factory",
+      "roles": [
+        "architect"
+      ],
+      "stages": [
+        "design"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/software-factory/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "tdd",
+      "roles": [
+        "developer",
+        "qa"
+      ],
+      "stages": [
+        "build",
+        "test"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/tdd/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "teach",
+      "roles": [
+        "documentation",
+        "outside-sdlc"
+      ],
+      "stages": [
+        "cross-stage",
+        "outside-sdlc"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/teach/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "to-questionnaire",
+      "roles": [
+        "product-manager"
+      ],
+      "stages": [
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/to-questionnaire/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "to-spec",
+      "roles": [
+        "documentation",
+        "product-manager"
+      ],
+      "stages": [
+        "cross-stage",
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/to-spec/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "to-tickets",
+      "roles": [
+        "product-manager",
+        "release"
+      ],
+      "stages": [
+        "deploy",
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/to-tickets/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "tool-design",
+      "roles": [
+        "architect",
+        "cross-cutting"
+      ],
+      "stages": [
+        "cross-stage",
+        "design"
+      ],
+      "availability": "bundled",
+      "source_id": "context-engineering-collection",
+      "archive_root": "context-engineering-collection/skills/tool-design/",
+      "entrypoint": "SKILL.md"
+    },
+    {
+      "id": "triage",
+      "roles": [
+        "product-manager",
+        "release"
+      ],
+      "stages": [
+        "deploy",
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/triage/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "tui-design",
+      "roles": [
+        "architect",
+        "developer",
+        "qa"
+      ],
+      "stages": [
+        "build",
+        "design",
+        "test"
+      ],
+      "availability": "bundled",
+      "source_id": "tui-design",
+      "archive_root": "tui-design/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "716633c308ac847f96741fac37c5c11bb234df8e"
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "roles": [
+        "architect"
+      ],
+      "stages": [
+        "design"
+      ],
+      "availability": "runtime-only-license-unverified",
+      "source_id": "unknown-local-origin",
+      "license_status": "no redistribution grant recorded locally",
+      "local_runtime_path": "ui-ux-pro-max"
+    },
+    {
+      "id": "wait-what",
+      "roles": [
+        "documentation"
+      ],
+      "stages": [
+        "cross-stage"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/wait-what/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "wayfinder",
+      "roles": [
+        "product-manager"
+      ],
+      "stages": [
+        "plan"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/wayfinder/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "wizard",
+      "roles": [
+        "developer",
+        "outside-sdlc"
+      ],
+      "stages": [
+        "build",
+        "outside-sdlc"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/wizard/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "writing-beats",
+      "roles": [
+        "documentation",
+        "outside-sdlc"
+      ],
+      "stages": [
+        "cross-stage",
+        "outside-sdlc"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/writing-beats/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "writing-for-agents",
+      "roles": [
+        "documentation"
+      ],
+      "stages": [
+        "cross-stage"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/writing-for-agents/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "writing-fragments",
+      "roles": [
+        "documentation",
+        "outside-sdlc"
+      ],
+      "stages": [
+        "cross-stage",
+        "outside-sdlc"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/writing-fragments/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    },
+    {
+      "id": "writing-shape",
+      "roles": [
+        "documentation",
+        "outside-sdlc"
+      ],
+      "stages": [
+        "cross-stage",
+        "outside-sdlc"
+      ],
+      "availability": "bundled",
+      "source_id": "mattpocock-skills",
+      "archive_root": "mattpocock-skills/skills/writing-shape/",
+      "entrypoint": "SKILL.md",
+      "source_revision": "abeeaf95660ba9e8b7c753eb38f441ca707a8823"
+    }
+  ]
+}

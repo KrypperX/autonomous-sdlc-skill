@@ -5,10 +5,10 @@ This is the project's **own operating contract**. It captures practical engineer
 ## Observe → decide → act → prove → record → improve
 
 1. **Understand before acting:** establish intent, authorization, baseline, constraints and acceptance evidence; inspect current code, issues and ongoing PRs before creating work.
-2. **Discover and use relevant skills:** inventory actual installed specialists for each meaningful task; use a helpful compatible one, or safely discover, review and acquire a project-local candidate within delegated permissions. Validate the benefit and avoid duplicated orchestration. See SKILL_ACQUISITION.md.
+2. **Discover and use relevant skills:** inventory actual installed specialists for each meaningful task; use a helpful compatible one, or safely discover, review and acquire a project-local candidate only when current authorization and workspace policy cover the exact scope. This skill grants no installation permission. Validate the benefit and avoid duplicated orchestration. See SKILL_ACQUISITION.md.
 3. **Execute and challenge:** act on authorized work, verify actual outcomes, and challenge unsupported assumptions (including user proposals) with concrete evidence. Use bounded independent critique when risk justifies it, not on every task. Follow OPERATIONAL_CHALLENGE.md.
-5. **Prefer reuse:** inspect existing interfaces, libraries and tests before introducing a new abstraction. Optimize for correctness and maintainability, not minimum line count.
-5. **Plan to the risk:** a small fix gets a concise checklist; larger changes get stable-ID tasks, dependency order, impact analysis, rollback strategy and explicit decision points.
+4. **Prefer reuse:** inspect existing interfaces, libraries and tests before introducing a new abstraction. Optimize for correctness and maintainability, not minimum line count.
+5. **Plan to the risk:** a small fix stays inline; larger changes get stable-ID tasks, dependency order, impact analysis, rollback strategy and explicit decision points.
 6. **Make progress visible:** reconcile issue checklist and actual repository state; distinguish TODO, IN PROGRESS, BLOCKED, DONE and VERIFIED. Record meaningful transitions with evidence.
 7. **Close feedback loops early:** reproduce failures; test focused changes; cover negative, regression, security and compatibility paths proportionate to risk. Do not invent test results.
 8. **Review the whole impact:** compare intent, actual diff, affected consumers and existing tests; seek independent perspective when available; address blocking findings.

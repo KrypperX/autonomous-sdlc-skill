@@ -7,8 +7,8 @@ Before changing code, read the authorized issue, current PR, repository instruct
 1. Identify issue number, scope, owner and acceptance criteria; search for existing PR/worktrees and avoid duplicates.
 2. Parse existing checklist and preserve user-authored items, ordering, descriptions and completed evidence. Do not reset progress.
 3. Compare each checked item with current branch, commit, CI and artifact evidence; reopen stale or invalidated items with explanation.
-4. Derive an adaptive work breakdown. Small task: 3–5 meaningful checks. Large task: milestones, dependent subtasks and stage gates.
-5. Each item has stable ID, owner if delegated, dependency, expected evidence and status.
+4. Derive a breakdown that matches the selected execution path. A direct task needs no artificial checklist; structured/high-assurance work uses criteria and dependencies that need tracking.
+5. Give each tracked item a stable ID, owner if delegated, dependency, expected evidence and status. Delegated work receives the AC IDs, bounded scope and source revision; workers return evidence to the coordinator, which alone updates shared status.
 
 ## Status semantics
 - TODO: not started.

@@ -1,36 +1,26 @@
 ---
 name: autonomous-sdlc
-description: Evidence-driven, risk-adaptive Codex software development from intent through review, delivery and feedback. Uses optional specialist skills without creating an engine.
+description: Coordinates evidence-driven Codex software work across planning, architecture, implementation, testing, release and operations, with staged native subagents and a role-routed specialist-skill library. No background agent runtime.
 ---
 
 # Autonomous SDLC
 
 This is a Codex skill, not a scheduler, MCP server or autonomous runtime. Read repository `AGENTS.md`, local policies and existing CI before working. Existing permissions, branch rules and orchestration are authoritative.
 
-## Mandatory progress behavior
+## One task contract
 
-For every multi-step task, follow [TASK_PROGRESS_PROTOCOL](references/TASK_PROGRESS_PROTOCOL.md): reconcile the existing issue/PR and checklist before coding; create stable-ID TODOs tied to acceptance criteria; update statuses at meaningful transitions; mark GitHub checkboxes complete **only after VERIFIED evidence**; persist checkpoints and resume from the first unverified dependency. Never erase user checklist content or claim a GitHub update that was not written. Use [task progress template](assets/templates/task_progress.md) when useful. Follow our independent [behavioral contract](references/BEHAVIOR_CONTRACT.md); no external playbook is required.
+For multi-step work, follow [TASK_PROGRESS_PROTOCOL](references/TASK_PROGRESS_PROTOCOL.md): reconcile the current issue/PR and checklist, preserve user-authored progress, and keep acceptance criteria, status and evidence in one source of truth. Use stable IDs when there are multiple criteria, dependencies, delegation or a resume need; keep a small fix inline. Mark GitHub checkboxes complete **only after VERIFIED evidence**. Never claim a write that did not succeed. Use [task progress template](assets/templates/task_progress.md) when the task needs a durable checkpoint. Follow [the behavioral contract](references/BEHAVIOR_CONTRACT.md).
 
 ## Practical execution and critical challenge
 
 Follow [operational challenge protocol](references/OPERATIONAL_CHALLENGE.md). For authorized tasks, perform real edits and tests rather than stopping at recommendations. Challenge unsupported user or agent assumptions with evidence, and use bounded independent subagent critique only when uncertainty or risk justifies its cost. A single integration owner resolves disagreements using tests and acceptance criteria; do not claim a debate or execution that did not occur.
 
-## Execution order
+## Integrated execution
 
-1. **Discover** — confirm authorization, scope, existing work, baseline and measurable acceptance criteria.
-2. **Design / Plan** — inspect the codebase, reuse existing functionality, assess impact and risks, map criteria to tests, and choose a minimal coherent implementation.
-3. **Build** — implement in bounded increments with appropriate tests. Delegate only if the runtime supports it and scopes do not overlap.
-4. **Verify** — run targeted checks, relevant regression/negative/security checks and trace each criterion to evidence.
-5. **Review** — inspect the actual diff independently where possible, resolve blocking findings and rerun invalidated checks.
-6. **Deliver** — confirm exact-head CI, permissions, approvals and branch protection before authorized merge/deploy.
-7. **Observe / Learn** — verify observable outcome where possible, convert confirmed regressions into tests, and hand off remaining work.
+Use [the integrated workflow](references/WORKFLOW_RULES.md) as the operating model and [stage contracts](references/STAGE_CONTRACTS.md) as its gates. The gates expand the six-stage artifact-handoff lifecycle—Plan → Design → Build → Test → Deploy → Maintain—into Discover → Design → Plan → Build → Verify → Review → Deliver → Observe. Role templates are task-scoped execution helpers, not a requirement to spawn one agent for each lifecycle function. Select the lightest depth that covers the task's risk. A localized, reversible task stays inline; structured work uses one acceptance map and bounded work units; high-risk work adds design, rollback and independent verification.
 
-At each transition, update progress when evidence changes and apply [stage contracts](references/STAGE_CONTRACTS.md) and [quality protocol](references/QUALITY_PROTOCOL.md). A failed gate follows the [recovery matrix](references/RECOVERY_MATRIX.md); never claim PASS without evidence. Scale documentation to risk using [templates](assets/templates).
+**One coordinator owns the lifecycle.** For Structured and High assurance tasks, use Codex's native subagent threads for the stages specified in [the workflow](references/WORKFLOW_RULES.md): dispatch a planner for decomposition, an architect for real design decisions, builders for bounded implementation units, then independent verification/review as required. When a distinct delivery-readiness handoff is useful, dispatch `release` to prepare revision-specific evidence; the coordinator retains approval and delivery authority. Wait for each required handoff, integrate its evidence in the parent thread and only then advance the gate. Use native thread orchestration, not a shell-launched `codex exec` process. Custom role TOML files improve role consistency but are not required: when absent, assign the role contract to an available native subagent. Direct tasks stay inline; recovery runs only after a failed gate; observer runs after delivery when an outcome is observable. If native delegation is unavailable or disabled, perform the gates in the current agent without claiming subagents ran. This skill defines the orchestration policy; Codex executes the agent calls. It does not provide a separate engine, schedule background work or persist state by itself.
 
-## Integration contract
+Specialist skills are just-in-time methods for a concrete gap, not additional lifecycle owners. Use the [central skill library](references/SKILL_LIBRARY.md) to route by task context and lifecycle role, then confirm runtime availability for entries that are not bundled. Load only the selected method and route its useful output into the same acceptance/evidence map; do not run a fixed stack of skills. Follow [contextual skill acquisition](references/SKILL_ACQUISITION.md) only when the current request, applicable standing authorization and workspace policy cover the exact scope. Use native capabilities when no safe and authorized specialist fits. For security work, prefer focused review; a full audit requires explicit authorization and safe isolation.
 
-**One owner of the lifecycle:** this skill owns SDLC stage selection, acceptance traceability, evidence and handoff. Optional external specialist skills provide *advice for one bounded task*; they do not replace this lifecycle, install themselves, alter project policy or assert final PASS. See [skill routing](references/SKILL_ROUTING.md) and [external skill trust policy](references/EXTERNAL_SKILLS.md).
-
-Before each meaningful task, inventory installed skills, select beneficial specialists, and if none fit, discover and evaluate candidates. Follow [contextual skill acquisition](references/SKILL_ACQUISITION.md): reviewed, pinned, non-destructive project-local skill installation is authorized within the user's delegated scope; request separate approval for privileged, global, costly, policy-changing or code-executing installation. Never blindly run unreviewed remote code. If no safe candidate is available, use native tools and record the gap. For security work, prefer focused review; full audits require explicit authorization and safe isolation.
-
-Use [workflow rules](references/WORKFLOW_RULES.md) and [handoff template](references/HANDOFF_TEMPLATE.md). Record issue/PR, exact SHA, acceptance evidence, CI results, unresolved risks, external skills used and next step. Do not claim background persistence.
+At each gate, record only material progress and apply [quality protocol](references/QUALITY_PROTOCOL.md). A failed gate follows the [recovery matrix](references/RECOVERY_MATRIX.md); verify each acceptance criterion against actual evidence. Scale documentation using [templates](assets/templates). The final handoff uses [HANDOFF_TEMPLATE](references/HANDOFF_TEMPLATE.md) and includes exact revision, evidence, unresolved risks and next action. Do not claim background persistence.

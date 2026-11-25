@@ -13,6 +13,7 @@
 - Changed files and implementation summary:
 - Verification commands, exit codes, CI URLs:
 - Review findings and disposition:
+- Delegated role handoffs (role → AC IDs / exact revision → result/evidence/blocker):
 - Security / compatibility / rollback:
 - Attempts, root cause, blockers:
 - Deployment and observed outcome (or N/A / UNKNOWN):

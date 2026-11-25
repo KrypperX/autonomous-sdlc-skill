@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import json
+import os
 import pathlib
 import shutil
 import sys
@@ -17,6 +18,16 @@ def install(project, scope, rules, roles):
     dest = skillbase/'autonomous-sdlc'
     if dest.resolve() == ROOT.resolve():
         raise ValueError('Cannot install onto source directory')
+    targetdir = None
+    if roles:
+        # Codex loads personal agents from CODEX_HOME/agents (or ~/.codex/agents)
+        # and project agents from .codex/agents. Match the requested install scope.
+        codex_home = pathlib.Path(os.environ.get('CODEX_HOME') or (pathlib.Path.home()/'.codex')).expanduser()
+        targetdir = codex_home/'agents' if scope == 'user' else project/'.codex/agents'
+        if targetdir.is_symlink():
+            raise ValueError('Agent destination is a symlink; refusing to install roles')
+        if targetdir.exists() and not targetdir.is_dir():
+            raise ValueError('Agent destination is not a directory')
     # Preflight every requested write before touching anything.
     existing = dest/'SKILL.md'
     if dest.exists() and (not existing.exists() or 'name: autonomous-sdlc' not in existing.read_text()):
@@ -31,9 +42,18 @@ def install(project, scope, rules, roles):
     # Track exact installed bytes so upgrades and uninstall preserve edits.
     manifest_path = dest/'.autonomous-sdlc-manifest.json'
     manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else None
-    sources = [ROOT/'SKILL.md', *sorted((ROOT/'references').glob('*.md')),
-               *sorted((ROOT/'assets/templates').glob('*.md')),
-               *sorted((ROOT/'docs').glob('*.md'))]
+    def package_files(directory):
+        result = []
+        for candidate in sorted(directory.rglob('*')):
+            if candidate.is_symlink():
+                raise ValueError('Refusing to package symlink: ' + candidate.relative_to(ROOT).as_posix())
+            if candidate.is_file():
+                result.append(candidate)
+        return result
+
+    sources = [ROOT/'SKILL.md', *package_files(ROOT/'references'),
+               *package_files(ROOT/'assets/templates'),
+               *package_files(ROOT/'docs')]
     entries = [(src, src.relative_to(ROOT).as_posix()) for src in sources]
     if dest.exists() and manifest is None:
         raise ValueError('Legacy install lacks ownership manifest; back up/migrate manually')
@@ -73,15 +93,20 @@ def install(project, scope, rules, roles):
             current = current.rstrip() + '\n\n' + block + '\n'
         f.write_text(current)
     if roles:
-        targetdir = project/'.codex/agents'
         targetdir.mkdir(parents=True, exist_ok=True)
         for src in (ROOT/'agents').glob('*.toml'):
             target = targetdir/src.name
-            if target.exists() and target.read_bytes() != src.read_bytes():
+            if target.is_symlink():
+                print('SKIP symlink role:', target, file=sys.stderr)
+                continue
+            if target.exists():
+                if target.is_file() and target.read_bytes() == src.read_bytes():
+                    print('Already installed role:', target)
+                    continue
                 print('SKIP existing role:', target, file=sys.stderr)
                 continue
             shutil.copy2(src, target)
-        print('Note: agent role templates require runtime-specific compatibility verification')
+            print('Installed agent role:', target)
     print('Installed skill:', dest)
 
 if __name__ == '__main__':

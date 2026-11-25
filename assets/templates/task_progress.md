@@ -6,18 +6,21 @@
 - Exact head SHA:
 - Last reconciled:
 - Current stage:
-- Owner / delegated roles:
+- Coordinator:
+- Delegated roles (optional; role → AC IDs / bounded scope):
 
 ## Acceptance criteria
 - [ ] AC-1 — description | status: TODO | evidence: pending
 - [ ] AC-2 — description | status: TODO | evidence: pending
 
 ## Milestones and work items
-- [ ] T-1 — Discover intent and baseline | status: TODO | depends: none | evidence:
-- [ ] T-2 — Design and accepted plan | status: TODO | depends: T-1 | evidence:
-- [ ] T-3 — Build and targeted checks | status: TODO | depends: T-2 | evidence:
-- [ ] T-4 — Verify and independent review | status: TODO | depends: T-3 | evidence:
-- [ ] T-5 — Deliver and observe | status: TODO | depends: T-4 | evidence:
+Use these as gates, not a requirement to spawn an agent for each stage. Mark irrelevant stages N/A with a reason.
+- [ ] T-1 — Reconcile intent, baseline and acceptance | status: TODO | depends: none | owner: | evidence:
+- [ ] T-2 — Accept design/plan when needed | status: TODO | depends: T-1 | owner: | evidence:
+- [ ] T-3 — Build bounded work units | status: TODO | depends: T-2 | owner: | evidence:
+- [ ] T-4 — Verify criteria on exact head | status: TODO | depends: T-3 | owner: | evidence:
+- [ ] T-5 — Review and resolve blocking findings | status: TODO | depends: T-4 | owner: | evidence:
+- [ ] T-6 — Deliver and observe when possible | status: TODO | depends: T-5 | owner: | evidence:
 
 ## Progress log (append meaningful transitions only)
 | Time | Task | From → To | Evidence / SHA | Decision |
@@ -25,6 +28,7 @@
 
 ## Blockers / decisions
 - Blocker, root cause, attempts, next unblock condition:
+- Role handoffs (role → AC IDs / revision → evidence or blocker):
 
 ## Resume checkpoint
 - Verified items:

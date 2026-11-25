@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
     "references/STAGE_CONTRACTS.md", "references/QUALITY_PROTOCOL.md",
+    "references/SKILL_LIBRARY.md", "references/skill-library/CATALOG.md",
     "references/RECOVERY_MATRIX.md", "references/EXTERNAL_SKILLS.md",
     "references/SKILL_ROUTING.md", "references/BEHAVIOR_CONTRACT.md", "references/SKILL_ACQUISITION.md", "references/OPERATIONAL_CHALLENGE.md", "references/TASK_PROGRESS_PROTOCOL.md", "references/WORKFLOW_RULES.md",
     "references/HANDOFF_TEMPLATE.md", "assets/templates/intent.md",
