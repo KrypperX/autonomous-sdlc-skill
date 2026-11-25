@@ -9,6 +9,7 @@ import shutil
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
+SKILL_ROOT = ROOT/'skills/autonomous-sdlc'
 START = '<!-- autonomous-sdlc:begin -->'
 END = '<!-- autonomous-sdlc:end -->'
 
@@ -51,10 +52,8 @@ def install(project, scope, rules, roles):
                 result.append(candidate)
         return result
 
-    sources = [ROOT/'SKILL.md', *package_files(ROOT/'references'),
-               *package_files(ROOT/'assets/templates'),
-               *package_files(ROOT/'docs')]
-    entries = [(src, src.relative_to(ROOT).as_posix()) for src in sources]
+    sources = package_files(SKILL_ROOT)
+    entries = [(src, src.relative_to(SKILL_ROOT).as_posix()) for src in sources]
     if dest.exists() and manifest is None:
         raise ValueError('Legacy install lacks ownership manifest; back up/migrate manually')
     if manifest is not None:
@@ -94,7 +93,7 @@ def install(project, scope, rules, roles):
         f.write_text(current)
     if roles:
         targetdir.mkdir(parents=True, exist_ok=True)
-        for src in (ROOT/'agents').glob('*.toml'):
+        for src in (SKILL_ROOT/'agents').glob('*.toml'):
             target = targetdir/src.name
             if target.is_symlink():
                 print('SKIP symlink role:', target, file=sys.stderr)

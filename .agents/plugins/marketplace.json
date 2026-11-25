@@ -1,0 +1,20 @@
+{
+  "name": "autonomous-sdlc-local",
+  "interface": {
+    "displayName": "Autonomous SDLC (Local Test)"
+  },
+  "plugins": [
+    {
+      "name": "autonomous-sdlc",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

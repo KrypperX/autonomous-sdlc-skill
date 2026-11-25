@@ -1,0 +1,34 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "autonomous-sdlc",
+  "version": "0.1.0",
+  "description": "Evidence-driven software delivery with lifecycle gates, specialist skill routing, and native in-thread subagents.",
+  "author": {
+    "name": "KrypperX",
+    "url": "https://github.com/KrypperX"
+  },
+  "homepage": "https://github.com/KrypperX/autonomous-sdlc-skill",
+  "repository": "https://github.com/KrypperX/autonomous-sdlc-skill",
+  "license": "MIT",
+  "keywords": [
+    "software-development",
+    "SDLC",
+    "agents",
+    "Codex"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Autonomous SDLC",
+        "shortDescription": "Plan, build, verify, and deliver software with evidence.",
+        "longDescription": "A model-invoked Codex skill for evidence-driven software work. It routes work through risk-scaled lifecycle gates, native in-thread subagents, and a license-aware library of specialist skills.",
+        "developerName": "KrypperX",
+        "category": "Productivity",
+        "defaultPrompt": [
+          "Use Autonomous SDLC to plan, implement, and verify this software change.",
+          "Use Autonomous SDLC to review this change against its acceptance criteria."
+        ]
+      }
+    }
+  }
+}
