@@ -23,6 +23,23 @@ Use [the integrated workflow](references/WORKFLOW_RULES.md) as the operating mod
 
 Specialist skills are just-in-time methods for a concrete gap, not additional lifecycle owners. Use the [central skill library](references/SKILL_LIBRARY.md) to route by task context and lifecycle role, then confirm runtime availability for entries that are not bundled. Load only the selected method and route its useful output into the same acceptance/evidence map; do not run a fixed stack of skills. Follow [contextual skill acquisition](references/SKILL_ACQUISITION.md) only when the current request, applicable standing authorization and workspace policy cover the exact scope. Use native capabilities when no safe and authorized specialist fits. For security work, prefer focused review; a full audit requires explicit authorization and safe isolation.
 
+## Mandatory role dispatch gate
+
+For meaningful software changes, role selection is mandatory, not advisory. Before execution, classify the task and record the required roles, assignment scope, acceptance IDs and dependencies. When native subagents are available and authorized, actually dispatch each triggered role through the host's native delegation mechanism; do not substitute role labels, simulated dialogue or coordinator self-review.
+
+- Planner: structured or multi-step work.
+- Architect: material design, interface or architecture decisions.
+- Builder: substantive implementation or code changes.
+- Tester: behavioral changes requiring verification.
+- Reviewer: independent review of substantive changes; use a different worker from the builder.
+- Release: delivery readiness when merge, release or deployment is in scope.
+- Recovery: failed gate requiring diagnosis or repair.
+- Observer: post-delivery verification when an authorized observable signal exists.
+
+Each assignment must include the relevant specialist execution gate, bounded scope, allowed tools, acceptance criteria and required evidence. Wait for actual worker results and integrate them before advancing dependent stages. Parallelize only independent work. Record role, dispatch identifier when exposed, returned artifacts, verification and outcome in the existing task record. Missing or failed dispatch is not completed work.
+
+This gate supersedes optional-role wording elsewhere for triggered roles. Direct trivial tasks may remain inline with a recorded justification. If native delegation is unavailable, disabled or unauthorized, record the limitation and perform necessary work inline without claiming independent execution; if independence is a required acceptance condition, mark that condition blocked. Never bypass permissions or spawn shell-based replacement agents. No separate runtime is introduced.
+
 ## Specialist execution gate (required for meaningful work)
 
 Before the first substantive action and whenever the stage or material gap changes, the executing agent must check the central catalog and select a relevant specialist, or record why native execution is more appropriate. For a selected specialist:
