@@ -20,6 +20,9 @@ Before changing code, read the authorized issue, current PR, repository instruct
 
 GitHub checkbox `[x]` represents **VERIFIED** only; do not tick merely because code was written. Preserve status text for non-verified items. For a criterion that becomes invalid after a new commit or changed requirement, untick and explain.
 
+## Role and specialist evidence
+Record required role, trigger, actual dispatch identifier when exposed, returned artifacts and outcome. Record specialist ID, revision when available, criterion, method applied, action/artifact, verification and status (selected, loaded, applied, verified, blocked, not applicable). Missing dispatch or reading alone is not verified execution. Keep this in the existing evidence map, not a separate tracker.
+
 ## Progress events
 Update the plan/checklist when: a task starts, a milestone finishes, a test fails or passes, a blocker appears, scope changes, a PR/CI status changes, or the session ends. Prefer one concise managed issue-body section; when editing is unavailable, post a structured progress comment if permitted. Avoid noisy per-command comments. Preserve non-managed issue content; never overwrite unrelated edits. Re-read before update and reconcile concurrent changes. Record exact SHA and links for verifiable transitions.
 
