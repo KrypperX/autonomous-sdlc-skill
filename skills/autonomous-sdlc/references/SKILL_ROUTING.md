@@ -1,8 +1,8 @@
 # Role and skill composition
 
-`autonomous-sdlc` is the coordinator: it owns the task contract, outer lifecycle, acceptance status and final handoff. Agent role templates are optional workers for bounded execution. Specialist skills are optional methods that may guide the coordinator or a worker; native Codex subagents inherit skills from their parent unless their configuration disables them. A sibling's private findings or context do not transfer automatically, so pass relevant results through the handoff. A domain specialist may run its own bounded procedure inside an assigned stage, then returns findings to the same acceptance/evidence map. Do not restart the SDLC lifecycle.
+`autonomous-sdlc` is the coordinator: it owns the task contract, outer lifecycle, acceptance status and final handoff. Role dispatch is mandatory when the workflow trigger applies; custom templates are optional. Specialist selection, loading and evidence-backed application follow the mandatory gates in ../SKILL.md; native Codex subagents inherit skills from their parent unless their configuration disables them. A sibling's private findings or context do not transfer automatically, so pass relevant results through the handoff. A domain specialist may run its own bounded procedure inside an assigned stage, then returns findings to the same acceptance/evidence map. Do not restart the SDLC lifecycle.
 
-The [central catalog](SKILL_LIBRARY.md) is the inventory and role-routing source. Check it and discoverable Codex roles once per meaningful task, then select a role or skill only when it closes a concrete gap. Custom role files are optional: when missing, use an available native subagent thread with the role's assignment contract. A skill may support multiple criteria; reuse it instead of loading overlapping playbooks. For Codex dispatch triggers and wait/integrate rules, see [workflow rules](WORKFLOW_RULES.md#codex-subagent-availability).
+The [central catalog](SKILL_LIBRARY.md) is the inventory and role-routing source. Check it and discoverable Codex roles once per meaningful task, then dispatch every triggered role and select a relevant specialist for each concrete gap or document why native execution is preferable. Custom role files are optional: when missing, use an available native subagent thread with the role's assignment contract. A skill may support multiple criteria; reuse it instead of loading overlapping playbooks. For Codex dispatch triggers and wait/integrate rules, see [workflow rules](WORKFLOW_RULES.md#codex-subagent-availability).
 
 ## Lifecycle owners and execution helpers
 
@@ -21,7 +21,7 @@ The source playbook describes six lifecycle functions: product management, archi
 
 ## Stage composition
 
-| Workflow need | Optional role worker | Optional skill method | Contribution returned to the coordinator |
+| Workflow need | Triggered role worker | Candidate skill method | Contribution returned to the coordinator |
 |---|---|---|---|
 | Frame unclear requirements, dependencies or acceptance | `planner` | `grilling` for consequential ambiguity; `research` for source-backed facts | Intent, scope, assumptions, criterion IDs and unresolved questions |
 | Choose module interfaces, cross-cutting design or migration approach | `architect` | `codebase-design` for module depth/seams; `harness-engineering` for agent control surfaces | One design mapped to criteria, key invariants, risks and verification approach |
@@ -30,7 +30,7 @@ The source playbook describes six lifecycle functions: product management, archi
 | Diagnose a failed check or unexplained bug | `recovery` | `diagnosing-bugs` | Reproduction, root cause or remaining hypothesis, cheapest discriminating check, bounded fix |
 | Verify a security or supply-chain boundary | `tester` for scoped checks; `reviewer` for findings | `security-audit` in focused guidance mode; full audit only when explicitly requested and safely isolated | Source evidence, affected boundary, confirmed/needs-validation status and verification limits |
 | Review correctness, maintainability, performance or accessibility | `reviewer` | `code-review`, relevant quality/performance skill, or `ponytail` for reuse/duplication | Severity-ranked findings tied to the exact diff and acceptance criteria |
-| Prepare release or delivery | `release` when merge/deploy needs a separate readiness handoff | `pr` for a PR body; a focused domain skill only when a concrete release risk calls for it | Exact revision, required checks, compatibility/migration notes, release summary, rollback steps and unresolved approvals |
+| Prepare release or delivery | `release` when meaningful merge/deploy work is in scope | `pr` for a PR body; a focused domain skill only when a concrete release risk calls for it | Exact revision, required checks, compatibility/migration notes, release summary, rollback steps and unresolved approvals |
 | Install or author a skill | No worker required by default | `skill-installer` for installer mechanics; `skill-creator` for skill structure; `writing-for-agents` for agent-facing prose | Reviewed source/scope, concise instructions and discovery/validation evidence |
 | Observe an already delivered change | `observer` | Relevant domain skill only if the observed issue needs diagnosis | Observable outcome or UNKNOWN, source of signal, incident/follow-up and next action |
 
