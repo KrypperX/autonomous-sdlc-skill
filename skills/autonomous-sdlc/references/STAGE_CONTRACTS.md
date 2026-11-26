@@ -35,10 +35,11 @@ Choose the lightest path that still covers the risk:
 | Path | Trigger | Minimum evidence and coordination |
 |---|---|---|
 | Direct | Clear, localized and reversible change | Inline intent/acceptance; current agent executes; one relevant check and diff review; concise handoff. No formal plan or subagent unless it materially improves the result. |
-| Structured | Multi-step, cross-file or dependency-bearing work | One task contract with stable criterion IDs; a native planner subagent handoff and accepted plan; bounded implementation units; targeted checks mapped to criteria; review before delivery. Dispatch architect/builder/tester/reviewer according to the workflow triggers. |
+| Structured | Multi-step, cross-file or dependency-bearing work | One task contract with stable criterion IDs; a native planner subagent handoff and accepted plan; bounded implementation units; targeted checks mapped to criteria; review before delivery. Dispatch every triggered role according to workflow rules; substantive implementation requires builder, tester and independent reviewer when available and authorized. |
 | High assurance | Auth, data integrity/loss, migrations, security, payments, public APIs or consequential agent autonomy | Native planner handoff; written design and rollback; negative and compatibility checks; independent tester and reviewer handoffs when supported; explicit approval for irreversible or externally visible actions. |
 
 - For long-running or background agents, also lock evaluation and promotion policy, restrict editable surfaces, preserve durable results, cap retries and cost, and define rollback and human approval.
+- Before advancing any gate, reconcile required role dispatch results and specialist execution evidence under ../SKILL.md; missing required independence blocks that criterion.
 - A risk-specific security or policy gate remains mandatory even on the Direct path.
 - No evidence available: mark UNKNOWN / NOT RUN, not PASS.
 - A changed commit invalidates previous exact-head verification.

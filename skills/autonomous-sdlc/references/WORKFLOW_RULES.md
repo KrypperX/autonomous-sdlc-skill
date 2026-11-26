@@ -20,7 +20,7 @@ Codex supports native subagent threads in the current session and can spawn them
 
 Agent instructions are behavioral constraints, not access controls. Codex subagents inherit the parent session's sandbox, approval policy and tools. Use parent-session permissions for enforcement, keep delegated write scopes disjoint (prefer separate worktrees for parallel writers), and have the coordinator inspect the integrated diff. A role labelled “read-only” must not be treated as OS-enforced read-only access.
 
-Use the following dispatch triggers to choose the team shape. Direct work stays inline. For every Structured or High assurance task, use a planner subagent to map criteria, dependencies and implementation units; use a builder subagent for each accepted implementation unit with a bounded, non-overlapping scope. High assurance work uses separate tester and reviewer subagents when native delegation is available. Other roles follow their specific trigger below.
+Use the following dispatch triggers to choose the team shape. Direct work stays inline. For every Structured or High assurance task, use a planner subagent to map criteria, dependencies and implementation units; use a builder subagent for each accepted implementation unit with a bounded, non-overlapping scope. Structured and High assurance substantive changes require separate tester and reviewer subagents when native delegation is available and authorized. Other roles follow their specific trigger below.
 
 | Role | Dispatch when | Keep inline / skip when |
 |---|---|---|
@@ -28,8 +28,8 @@ Use the following dispatch triggers to choose the team shape. Direct work stays 
 | `architect` | A public/interface boundary, cross-module design, migration/data model, security boundary or agent harness decision could change the implementation | Existing interfaces make the path clear |
 | `builder` | Each accepted implementation work unit in Structured/High assurance work; parallel builders only for independent units | A Direct task, or no implementation work is required |
 | `tester` | Implementation was delegated, multiple criteria need mapped evidence, or risk calls for independent verification; required for High assurance when available | A Direct task has one simple check the coordinator can run and inspect |
-| `reviewer` | Required for High assurance when available; otherwise use for consequential boundary changes or a distinct independent critique | Tiny low-risk change with no useful independent review angle |
-| `release` | An authorized merge/deploy/release is in scope and needs a distinct readiness handoff, such as CI/policy review, release notes, compatibility checks or rollback preparation | No delivery stage is in scope, or the coordinator can satisfy the documented gate without a separate handoff |
+| `reviewer` | Every substantive Structured or High assurance change; independent from builder | Tiny low-risk change with no useful independent review angle |
+| `release` | An authorized merge/deploy/release is in scope for meaningful work | No delivery stage is in scope, or justified trivial Direct work |
 | `recovery` | A stage gate fails or a transition is blocked by a concrete tool/environment error | No failure has occurred; never dispatch as routine ceremony |
 | `observer` | An authorized delivery has an available, relevant outcome signal | Nothing was delivered or the outcome cannot be inspected |
 
@@ -75,22 +75,23 @@ flowchart TD
 
 1. **Reconcile and frame.** Read repository policy, current issue/PR, branch, checks and existing progress. Confirm authorization, baseline, scope and definition of done. Preserve existing user-authored progress.
 2. **Plan once.** For Structured and High assurance work, dispatch a `planner` subagent to map criteria into dependency-aware work units; wait, reconcile its proposal and accept one plan. Use `architect` only for an actual interface, migration, cross-module or harness decision.
-3. **Compose relevant capabilities.** Inventory installed skills once. Select a role or skill only for a concrete gap and give it the relevant criterion IDs, scope, constraints, inputs, expected output and stop condition. Native Codex subagents inherit skills from their parent unless configured otherwise; pass task-specific pointers when useful, and explicitly hand off findings that exist only in a sibling's context. See [skill routing](SKILL_ROUTING.md). Do not ask specialists to repeat the full lifecycle or produce duplicate plans.
+3. **Compose relevant capabilities.** Inventory installed skills once. Dispatch every triggered role and require each executing worker to select and load a relevant specialist for its concrete gap or justify native execution and give it the relevant criterion IDs, scope, constraints, inputs, expected output and stop condition. Native Codex subagents inherit skills from their parent unless configured otherwise; pass task-specific pointers when useful, and explicitly hand off findings that exist only in a sibling's context. See [skill routing](SKILL_ROUTING.md). Do not ask specialists to repeat the full lifecycle or produce duplicate plans.
 4. **Build in slices.** Assign a `builder` only a bounded work unit with accepted criteria and disjoint write ownership. Prefer existing interfaces and small, testable changes. Keep security, compatibility and user constraints attached to each unit.
 5. **Verify and review the same revision.** A `tester` checks criteria against the exact changed head when triggered by the dispatch table, and is required for High assurance when delegation is available. A `reviewer` checks intent, diff and evidence independently; this handoff is required for High assurance when delegation is available and otherwise follows the dispatch table. The coordinator integrates findings and alone decides status. On failure, use `recovery` to diagnose the first failed gate, assign a bounded fix, then rerun the failed and invalidated checks; do not restart the whole workflow.
 6. **Prepare release and deliver.** When the dispatch trigger applies, a `release` worker prepares a revision-specific readiness report, release summary and rollback checklist. The coordinator checks CI, permissions, approvals and branch policy, then performs only the authorized delivery action.
 7. **Observe.** Use `observer` only when a delivered outcome can actually be inspected. Report UNKNOWN when it cannot.
 
-Stages not required by the selected mode may stay inside the coordinator when a role adds no value. If delegation is unavailable or disabled, perform the same gates inline and record that no subagent ran. Do not dispatch a fixed chain for Direct tasks; every required acceptance criterion still needs evidence.
+Stages not required by the selected mode may stay inside the coordinator when a role adds no value. If delegation is unavailable or disabled, perform the same gates inline and record that no subagent ran; mark required independent acceptance blocked rather than substituting self-review. Do not dispatch a fixed chain for Direct tasks; every required acceptance criterion still needs evidence.
 
 ## Handoff contract
 
-Each delegated assignment states:
+Each delegated assignment must follow the mandatory role dispatch and specialist execution gates in ../SKILL.md and states:
 
 - task ID and relevant acceptance-criterion IDs;
 - current stage, source revision and bounded scope;
 - read/write authority, dependencies and constraints;
-- one concrete question or deliverable and a stop condition.
+- one concrete question or deliverable and a stop condition;
+- relevant catalog route, specialist method access, required execution evidence and verification.
 
 Each worker returns a concise result with evidence and limitations, changed files or commands when relevant, criterion impact, blockers/risks and one next action. Only the coordinator dispatches children, updates shared progress, changes acceptance status, resolves scope changes or advances a stage; workers return to the coordinator instead of creating nested agents. Parallel writers need disjoint files/worktrees and an integration owner; otherwise work sequentially.
 

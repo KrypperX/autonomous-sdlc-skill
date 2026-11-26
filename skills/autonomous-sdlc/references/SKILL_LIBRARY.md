@@ -8,7 +8,7 @@ The [central catalog](skill-library/CATALOG.md) is the routing source for the lo
 2. Consult the matching role section in the catalog. Read only one primary specialist method for each gap; add a second only for a distinct concern.
 3. For a bundled entry, resolve `read_skill.py` relative to the loaded `autonomous-sdlc/SKILL.md` and stream its `SKILL.md` with `python3 <library-root>/read_skill.py <skill-id>`. Use `--list` to discover packaged references and `--file path/inside/package.md` to read only the relevant one.
 4. For an installed-only entry, confirm that exact skill is available in the current Codex runtime before use. The catalog is not evidence that an unbundled skill can be invoked.
-5. Return useful guidance to the same task contract, stage gate and acceptance evidence. A specialist remains subordinate to the coordinator and repository policy.
+5. Apply the selected method through authorized tools and return actual action/artifact and verification evidence to the same task contract. Record selected, loaded, applied, verified, blocked or not applicable separately; reading alone is not application. A specialist remains subordinate to the coordinator and repository policy.
 
 The library contains source snapshots as passive reference material. A skill's presence in the catalog does not authorize its scripts, package installation, network access, issue/PR writes, release actions or deployment. Review any code sample before running it, and verify version-sensitive claims against current primary documentation.
 

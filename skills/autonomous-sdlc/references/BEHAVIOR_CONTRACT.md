@@ -20,7 +20,7 @@ This is the project's **own operating contract**. It captures practical engineer
 ## Scope boundaries
 
 - Codex performs the work when invoked; this skill does not run a scheduler, daemon or autonomous background engine.
-- Specialist skills are optional scoped advisors, not competing lifecycle owners.
+- Triggered roles must be dispatched through native subagents when available and authorized. Specialist methods must be selected, loaded and applied with evidence when relevant; justify native fallback. Neither owns a competing lifecycle.
 - Local or GitHub progress is persistent only when a write actually succeeds.
 - For high-risk work, demand stronger evidence; for low-risk work, avoid bureaucracy without weakening safety.
 - Keep all source documents and instructions self-contained in this repository. No external manual is required to execute the workflow.
