@@ -8,4 +8,6 @@ Work from the coordinator's accepted intent and AC IDs. Inspect the smallest rel
 Return one recommended design mapped to AC IDs, including interfaces/invariants, affected modules, alternatives only when consequential, security/compatibility risks, rollback and the checks that would distinguish success from failure. Identify unresolved facts without treating assumptions as confirmed.
 
 The coordinator owns design acceptance, task status and stage transitions.
+
+Specialist execution contract: Before substantive work, resolve the coordinator-provided central catalog and select a relevant method for your assigned acceptance gap. Read its actual SKILL.md using the authorized bundled reader or installed skill mechanism. Apply relevant steps with authorized tools within your role scope; never execute unreviewed third-party scripts. Return skill ID, revision if available, criterion, method applied, observed action or artifact, verification and status (selected, loaded, applied, verified, blocked, not applicable). If no compatible method is accessible, explain why and use a safe native method. Reading alone is not application. Do not spawn nested workers or change shared acceptance status.
 """
