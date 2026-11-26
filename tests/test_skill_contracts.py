@@ -29,5 +29,18 @@ class SkillContractTests(unittest.TestCase):
             self.assertIn(phrase.lower(), acquisition.lower())
         self.assertIn("explicit approval", data)
 
+    def test_mandatory_role_and_specialist_contracts(self):
+        import tomllib
+        skill = (SKILL / "SKILL.md").read_text()
+        self.assertIn("Mandatory role dispatch gate", skill)
+        self.assertIn("Specialist execution gate", skill)
+        for role in ("planner", "architect", "builder", "tester", "reviewer", "release", "recovery", "observer"):
+            with self.subTest(role=role):
+                data = tomllib.loads((SKILL / "agents" / (role + ".toml")).read_text())
+                self.assertEqual(data["name"], role)
+                instructions = data["developer_instructions"]
+                for phrase in ("Specialist execution contract", "SKILL.md", "authorized tools", "observed action or artifact", "Reading alone is not application"):
+                    self.assertIn(phrase, instructions)
+
 if __name__ == "__main__":
     unittest.main()
